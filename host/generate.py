@@ -33,6 +33,12 @@ def write_ascii(handle, bits):
     out.tofile(handle)
 
 
+def read_ascii(path):
+    lines = open(path, "rb").read().split(b"\n")[:-1]
+    flat = np.frombuffer(b"".join(lines), dtype=np.uint8) - ord("0")
+    return flat.reshape(len(lines), -1).astype(bool)
+
+
 def sample(circuit, shots, det_path, obs_path):
     sampler = circuit.compile_detector_sampler(seed=SEED)
     lit = 0
