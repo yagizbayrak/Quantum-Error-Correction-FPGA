@@ -2,9 +2,12 @@
 
 import csv
 import pathlib
+import sys
 
 import numpy as np
 import pymatching
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "lib"))
 
 from generate import DATA, build_circuit
 

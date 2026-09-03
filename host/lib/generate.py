@@ -12,7 +12,7 @@ SHOTS = 10_000
 CHUNK = 100_000
 SEED = 1234
 
-DATA = pathlib.Path(__file__).resolve().parent.parent / "data"
+DATA = pathlib.Path(__file__).resolve().parents[2] / "data"
 
 
 def build_circuit(distance, rounds, noise):

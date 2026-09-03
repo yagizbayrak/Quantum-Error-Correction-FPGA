@@ -1,8 +1,13 @@
 """Trains a differentiable weightless neural network to predict the logical observable flip from detection events."""
 
+import pathlib
+import sys
+
 import pymatching
 import torch
 import torch_dwn as dwn
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "lib"))
 
 from generate import build_circuit
 

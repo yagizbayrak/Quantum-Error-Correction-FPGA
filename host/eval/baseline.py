@@ -1,7 +1,12 @@
 """Decodes the stored shots with PyMatching and writes its per-shot predictions as the reference every other decoder is compared against."""
 
-import stim
+import pathlib
+import sys
+
 import pymatching
+import stim
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "lib"))
 
 from generate import DATA, read_ascii, write_ascii
 
