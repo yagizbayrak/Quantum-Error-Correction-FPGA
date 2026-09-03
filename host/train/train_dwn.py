@@ -10,6 +10,7 @@ import torch_dwn as dwn
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "lib"))
 
 from generate import build_circuit
+from results import RESULTS, mcnemar, record
 
 DISTANCE = 7
 NOISE = 0.001
@@ -54,13 +55,10 @@ def train(model, sampler):
     return model
 
 
-def error_rate(model, x, y):
+def predict(model, x):
     with torch.no_grad():
-        wrong = sum(
-            (model(x[i : i + 8192]).argmax(1) != y[i : i + 8192]).sum().item()
-            for i in range(0, len(x), 8192)
-        )
-    return wrong / len(x)
+        chunks = [model(x[i : i + 8192]).argmax(1) for i in range(0, len(x), 8192)]
+    return torch.cat(chunks).cpu().numpy().astype(bool)
 
 
 def main():
@@ -71,14 +69,35 @@ def main():
     y = torch.tensor(truth[:, 0], dtype=torch.long, device=DEV)
 
     model = train(build(circuit.num_detectors), sampler)
+    torch.save(model.state_dict(), RESULTS / f"weightless-d{DISTANCE}-p{NOISE}.pt")
+
     matcher = pymatching.Matching.from_detector_error_model(
         circuit.detector_error_model(decompose_errors=True)
     )
-    reference = (matcher.decode_batch(dets)[:, 0].astype(bool) != truth[:, 0]).mean()
+    answer = truth[:, 0]
+    mwpm_prediction = matcher.decode_batch(dets)[:, 0].astype(bool)
+    our_prediction = predict(model, x)
+    weightless = (our_prediction != answer).mean()
+    reference = (mwpm_prediction != answer).mean()
+    ours, theirs, sigma = mcnemar(our_prediction, mwpm_prediction, answer)
 
     print(f"d={DISTANCE} p={NOISE} {circuit.num_detectors} detectors, {EPOCHS * SHOTS_PER_EPOCH / 1e6:.0f}M presentations")
-    print(f"  weightless {error_rate(model, x, y):.5f}")
+    print(f"  weightless {weightless:.5f}")
     print(f"  pymatching {reference:.5f}")
+    print(f"  discordant weightless only wrong {ours}, pymatching only wrong {theirs}, {sigma:+.1f} sigma")
+    record(
+        decoder="weightless",
+        distance=DISTANCE,
+        p=NOISE,
+        shots=TEST_SHOTS,
+        seed=SEED,
+        config=f"{WIDTHS}, fan-in {FANIN}, tau {TAU}, batch {BATCH}",
+        float_rate=f"{weightless:.5f}",
+        pymatching=f"{reference:.5f}",
+        decoder_only_wrong=ours,
+        mwpm_only_wrong=theirs,
+        sigma=f"{sigma:+.1f}",
+    )
 
 
 if __name__ == "__main__":
