@@ -1,4 +1,4 @@
-"""Trains Yang's single-layer recurrent decoder to predict the logical observable flip from per-round detection events."""
+"""Replicates Yang's recurrent decoder: one LSTM layer over per-round Z-stabilizer detection events, 6-bit weights, clipped activations."""
 
 import pathlib
 import sys
@@ -16,6 +16,8 @@ DISTANCE = 3
 NOISE = 0.001
 HIDDEN = 32
 WEIGHT_BITS = 6
+TIMESTEPS = 20
+ROUNDS = range(1, TIMESTEPS)
 SHOTS = 2_000_000
 TEST_FRACTION = 0.2
 BATCH = 256
@@ -35,6 +37,14 @@ def fake_quant(w, bits):
     return w if bits is None else w + (quantize(w, bits) - w).detach()
 
 
+def hard_sigmoid(x):
+    return (0.5 * x + 0.5).clamp(0.0, 1.0)
+
+
+def hard_tanh(x):
+    return x.clamp(0.0, 1.0)
+
+
 class Decoder(torch.nn.Module):
     def __init__(self, width, bits):
         super().__init__()
@@ -46,7 +56,7 @@ class Decoder(torch.nn.Module):
         self.wd = torch.nn.Parameter(torch.empty(1, HIDDEN).uniform_(-k, k))
         self.bd = torch.nn.Parameter(torch.zeros(1))
 
-    def forward(self, x):
+    def forward(self, x, mask):
         wi, wh, b, wd, bd = (
             fake_quant(p, self.bits) for p in (self.wi, self.wh, self.b, self.wd, self.bd)
         )
@@ -54,52 +64,79 @@ class Decoder(torch.nn.Module):
         c = h
         for t in range(x.shape[1]):
             i, f, u, o = (x[:, t] @ wi.T + h @ wh.T + b).chunk(4, 1)
-            c = f.sigmoid() * c + i.sigmoid() * u.tanh()
-            h = o.sigmoid() * c.tanh()
+            step = mask[:, t : t + 1]
+            c = torch.where(step, hard_sigmoid(f) * c + hard_sigmoid(i) * hard_tanh(u), c)
+            h = torch.where(step, hard_sigmoid(o) * hard_tanh(c), h)
         return (h @ wd.T + bd).squeeze(1)
 
 
-def layer_groups(circuit):
+def z_layers(circuit):
     groups = {}
     for index, coord in circuit.get_detector_coordinates().items():
-        groups.setdefault(int(coord[2]), []).append(index)
-    return [sorted(groups[t]) for t in sorted(groups)]
+        groups.setdefault(int(coord[2]), []).append((coord[0], coord[1], index))
+    first = {(x, y) for x, y, _ in groups[0]}
+    return [
+        [i for x, y, i in sorted(groups[t]) if (x, y) in first] for t in sorted(groups)
+    ]
 
 
-def sequence(dets, groups, width):
-    out = np.zeros((len(dets), len(groups), width), dtype=np.float32)
-    for t, indices in enumerate(groups):
-        out[:, t, : len(indices)] = dets[:, indices]
-    return torch.tensor(out, device=DEV)
+def dataset(rounds, shots):
+    circuit = build_circuit(DISTANCE, rounds, NOISE)
+    layers = z_layers(circuit)
+    dets, truth = circuit.compile_detector_sampler(seed=SEED + rounds).sample(
+        shots, separate_observables=True
+    )
+    x = np.full((shots, TIMESTEPS, len(layers[0])), -1.0, dtype=np.float32)
+    mask = np.zeros((shots, TIMESTEPS), dtype=bool)
+    for t, indices in enumerate(layers):
+        x[:, t] = dets[:, indices]
+        mask[:, t] = True
+    return x, mask, truth[:, 0], circuit, dets
 
 
-def predict(model, x):
+def batches(x, mask, y, size, shuffle):
+    order = torch.randperm(len(x)) if shuffle else torch.arange(len(x))
+    for i in range(0, len(x), size):
+        pick = order[i : i + size]
+        yield (
+            torch.tensor(x[pick.numpy()], device=DEV),
+            torch.tensor(mask[pick.numpy()], device=DEV),
+            torch.tensor(y[pick.numpy()], dtype=torch.float32, device=DEV),
+        )
+
+
+def predict(model, x, mask):
     with torch.no_grad():
-        chunks = [model(x[i : i + 8192]) > 0 for i in range(0, len(x), 8192)]
-    return torch.cat(chunks).cpu().numpy()
+        out = [
+            model(
+                torch.tensor(x[i : i + 8192], device=DEV),
+                torch.tensor(mask[i : i + 8192], device=DEV),
+            )
+            > 0
+            for i in range(0, len(x), 8192)
+        ]
+    return torch.cat(out).cpu().numpy()
 
 
-def train(model, x, y, vx, vy):
+def train(model, train_set, validation_set):
     opt = torch.optim.Adam(model.parameters(), lr=LR)
     best, waited, state = float("inf"), 0, None
     for _ in range(MAX_EPOCHS):
-        for i in range(0, len(x), BATCH):
-            loss = torch.nn.functional.binary_cross_entropy_with_logits(
-                model(x[i : i + BATCH]), y[i : i + BATCH]
-            )
+        for xb, mb, yb in batches(*train_set, BATCH, True):
+            loss = torch.nn.functional.binary_cross_entropy_with_logits(model(xb, mb), yb)
             opt.zero_grad()
             loss.backward()
             opt.step()
         with torch.no_grad():
-            validation = sum(
+            total = sum(
                 torch.nn.functional.binary_cross_entropy_with_logits(
-                    model(vx[i : i + 8192]), vy[i : i + 8192], reduction="sum"
+                    model(xb, mb), yb, reduction="sum"
                 ).item()
-                for i in range(0, len(vx), 8192)
-            ) / len(vx)
+                for xb, mb, yb in batches(*validation_set, 8192, False)
+            )
+        validation = total / len(validation_set[0])
         if validation < best:
-            best, waited = validation, 0
-            state = {k: v.clone() for k, v in model.state_dict().items()}
+            best, waited, state = validation, 0, {k: v.clone() for k, v in model.state_dict().items()}
         else:
             waited += 1
             if waited == PATIENCE:
@@ -108,55 +145,73 @@ def train(model, x, y, vx, vy):
     return model
 
 
+def epsilon(rates):
+    rounds = np.array(sorted(rates), dtype=float)
+    fidelity = np.array([1 - 2 * rates[int(n)] for n in rounds])
+    keep = fidelity > 0
+    slope = np.polyfit(rounds[keep], np.log(fidelity[keep]), 1)[0]
+    return (1 - np.exp(slope)) / 2
+
+
 def main():
     torch.manual_seed(SEED)
-    circuit = build_circuit(DISTANCE, DISTANCE, NOISE)
-    groups = layer_groups(circuit)
-    width = max(len(g) for g in groups)
+    per_round = SHOTS // len(ROUNDS)
+    split = int(per_round * (1 - TEST_FRACTION))
 
-    dets, truth = circuit.compile_detector_sampler(seed=SEED).sample(
-        SHOTS, separate_observables=True
-    )
-    split = int(SHOTS * (1 - TEST_FRACTION))
-    x = sequence(dets[:split], groups, width)
-    y = torch.tensor(truth[:split, 0], dtype=torch.float32, device=DEV)
-    vx = sequence(dets[split:], groups, width)
-    vy = torch.tensor(truth[split:, 0], dtype=torch.float32, device=DEV)
+    train_x, train_mask, train_y = [], [], []
+    held = {}
+    for rounds in ROUNDS:
+        x, mask, y, circuit, dets = dataset(rounds, per_round)
+        train_x.append(x[:split]); train_mask.append(mask[:split]); train_y.append(y[:split])
+        held[rounds] = (x[split:], mask[split:], y[split:], circuit, dets[split:])
 
-    reference = train(Decoder(width, None).to(DEV), x, y, vx, vy)
-    aware = train(Decoder(width, WEIGHT_BITS).to(DEV), x, y, vx, vy)
+    train_set = (np.concatenate(train_x), np.concatenate(train_mask), np.concatenate(train_y))
+    validation_set = tuple(np.concatenate([held[r][i] for r in ROUNDS]) for i in range(3))
 
+    width = train_set[0].shape[2]
+    reference = train(Decoder(width, None).to(DEV), train_set, validation_set)
+    aware = train(Decoder(width, WEIGHT_BITS).to(DEV), train_set, validation_set)
     torch.save(reference.state_dict(), RESULTS / f"recurrent-d{DISTANCE}-p{NOISE}-float.pt")
     torch.save(aware.state_dict(), RESULTS / f"recurrent-d{DISTANCE}-p{NOISE}-{WEIGHT_BITS}bit.pt")
 
-    matcher = pymatching.Matching.from_detector_error_model(
-        circuit.detector_error_model(decompose_errors=True)
-    )
-    answer = truth[split:, 0]
-    mwpm_prediction = matcher.decode_batch(dets[split:])[:, 0].astype(bool)
-    quantized_prediction = predict(aware, vx)
-    float_rate = (predict(reference, vx) != answer).mean()
-    quantized_rate = (quantized_prediction != answer).mean()
-    mwpm = (mwpm_prediction != answer).mean()
-    ours, theirs, sigma = mcnemar(quantized_prediction, mwpm_prediction, answer)
+    float_rates, aware_rates, mwpm_rates = {}, {}, {}
+    ours_total = theirs_total = 0
+    for rounds in ROUNDS:
+        x, mask, y, circuit, dets = held[rounds]
+        matcher = pymatching.Matching.from_detector_error_model(
+            circuit.detector_error_model(decompose_errors=True)
+        )
+        mwpm_prediction = matcher.decode_batch(dets)[:, 0].astype(bool)
+        aware_prediction = predict(aware, x, mask)
+        float_rates[rounds] = float((predict(reference, x, mask) != y).mean())
+        aware_rates[rounds] = float((aware_prediction != y).mean())
+        mwpm_rates[rounds] = float((mwpm_prediction != y).mean())
+        ours, theirs, _ = mcnemar(aware_prediction, mwpm_prediction, y)
+        ours_total += ours
+        theirs_total += theirs
 
-    print(f"d={DISTANCE} p={NOISE} {[len(g) for g in groups]} detectors per layer, {HIDDEN} units")
-    print(f"  recurrent float          {float_rate:.5f}")
-    print(f"  recurrent {WEIGHT_BITS}-bit aware    {quantized_rate:.5f}")
-    print(f"  pymatching               {mwpm:.5f}")
-    print(f"  discordant               {WEIGHT_BITS}-bit only wrong {ours}, pymatching only wrong {theirs}, {sigma:+.1f} sigma")
+    sigma = (theirs_total - ours_total) / (ours_total + theirs_total) ** 0.5
+    float_eps, aware_eps, mwpm_eps = (epsilon(r) for r in (float_rates, aware_rates, mwpm_rates))
+
+    print(f"d={DISTANCE} p={NOISE} rounds {ROUNDS.start}..{ROUNDS.stop - 1}, {width} Z stabilizers, {HIDDEN} units")
+    print(f"  per-round logical error rate, fit to F(n) = (1 - 2 eps)^n")
+    print(f"    float32          {float_eps:.5f}")
+    print(f"    {WEIGHT_BITS}-bit aware      {aware_eps:.5f}")
+    print(f"    pymatching       {mwpm_eps:.5f}")
+    print(f"  per-shot rate at {ROUNDS.stop - 1} rounds: {WEIGHT_BITS}-bit {aware_rates[ROUNDS.stop - 1]:.5f}, pymatching {mwpm_rates[ROUNDS.stop - 1]:.5f}")
+    print(f"  discordant       {ours_total} against {theirs_total}, {sigma:+.1f} sigma")
     record(
         decoder="recurrent",
         distance=DISTANCE,
         p=NOISE,
-        shots=len(vy),
+        shots=len(validation_set[0]),
         seed=SEED,
-        config=f"{HIDDEN} units, {WEIGHT_BITS} bit",
-        float_rate=f"{float_rate:.5f}",
-        quantized_rate=f"{quantized_rate:.5f}",
-        pymatching=f"{mwpm:.5f}",
-        decoder_only_wrong=ours,
-        mwpm_only_wrong=theirs,
+        config=f"{HIDDEN} units, {WEIGHT_BITS} bit, rounds 1-{ROUNDS.stop - 1}, per-round eps",
+        float_rate=f"{float_eps:.5f}",
+        quantized_rate=f"{aware_eps:.5f}",
+        pymatching=f"{mwpm_eps:.5f}",
+        decoder_only_wrong=ours_total,
+        mwpm_only_wrong=theirs_total,
         sigma=f"{sigma:+.1f}",
     )
 
