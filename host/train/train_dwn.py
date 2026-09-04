@@ -12,15 +12,15 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "lib"))
 from generate import build_circuit
 from results import RESULTS, mcnemar, record
 
-DISTANCE = 7
+DISTANCE = 3
 NOISE = 0.001
 WIDTHS = (1024, 512, 128, 32)
 FANIN = 6
 TAU = 3.33
 EPOCHS = 60
 SHOTS_PER_EPOCH = 1_000_000
-TEST_SHOTS = 200_000
-BATCH = 2048
+TEST_SHOTS = 2_000_000
+BATCH = 512
 LR = 1e-2
 SEED = 31
 DEV = "cuda"
@@ -69,7 +69,7 @@ def main():
     y = torch.tensor(truth[:, 0], dtype=torch.long, device=DEV)
 
     model = train(build(circuit.num_detectors), sampler)
-    torch.save(model.state_dict(), RESULTS / f"weightless-d{DISTANCE}-p{NOISE}.pt")
+    torch.save(model.state_dict(), RESULTS / f"dwn-d{DISTANCE}-p{NOISE}.pt")
 
     matcher = pymatching.Matching.from_detector_error_model(
         circuit.detector_error_model(decompose_errors=True)

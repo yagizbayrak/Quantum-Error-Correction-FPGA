@@ -5,8 +5,8 @@ import pathlib
 import numpy as np
 import stim
 
-DISTANCE = 7
-ROUNDS = 7
+DISTANCE = 3
+ROUNDS = 3
 NOISE = 0.001
 SHOTS = 10_000
 CHUNK = 100_000
@@ -39,14 +39,17 @@ def read_ascii(path):
     return flat.reshape(len(lines), -1).astype(bool)
 
 
-def sample(circuit, shots, det_path, obs_path):
-    sampler = circuit.compile_detector_sampler(seed=SEED)
+def sample(circuit, shots, meas_path, det_path, obs_path):
+    sampler = circuit.compile_sampler(seed=SEED)
+    converter = circuit.compile_m2d_converter()
     lit = 0
-    with open(det_path, "wb") as det, open(obs_path, "wb") as obs:
+    with open(meas_path, "wb") as meas, open(det_path, "wb") as det, open(obs_path, "wb") as obs:
         remaining = shots
         while remaining:
             n = min(CHUNK, remaining)
-            dets, truth = sampler.sample(n, separate_observables=True)
+            outcomes = sampler.sample(n)
+            dets, truth = converter.convert(measurements=outcomes, separate_observables=True)
+            write_ascii(meas, outcomes)
             write_ascii(det, dets)
             write_ascii(obs, truth)
             lit += dets.sum()
@@ -61,9 +64,13 @@ def main():
 
     circuit.to_file(DATA / "circuit.stim")
     model.to_file(DATA / "model.dem")
-    density = sample(circuit, SHOTS, DATA / "detectors.txt", DATA / "observables.txt")
+    density = sample(
+        circuit, SHOTS,
+        DATA / "measurements.txt", DATA / "detectors.txt", DATA / "observables.txt",
+    )
 
     print(f"qubits       {circuit.num_qubits}")
+    print(f"measurements {circuit.num_measurements}")
     print(f"detectors    {circuit.num_detectors}")
     print(f"observables  {circuit.num_observables}")
     print(f"shots        {SHOTS}")
