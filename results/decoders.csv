@@ -1,0 +1,4 @@
+decoder,distance,p,shots,seed,config,float_rate,quantized_rate,pymatching,decoder_only_wrong,mwpm_only_wrong,sigma
+weightless,3,0.001,2000000,31,"(1024, 512, 128, 32), fan-in 6, tau 3.33, batch 512",0.00075,,0.00078,286,348,+2.5
+weightless,3,0.005,2000000,31,"(1024, 512, 128, 32), fan-in 6, tau 3.33, batch 512",0.01535,,0.01710,5876,9387,+28.4
+recurrent,3,0.001,400007,31,"32 units, 6 bit, rounds 1-19, per-round eps",0.00026,0.00024,0.00023,159,142,-1.0
