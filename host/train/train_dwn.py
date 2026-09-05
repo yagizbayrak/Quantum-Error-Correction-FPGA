@@ -13,7 +13,7 @@ from generate import build_circuit
 from results import RESULTS, mcnemar, record
 
 DISTANCE = 3
-NOISE = 0.001
+NOISE = 0.005
 WIDTHS = (1024, 512, 128, 32)
 FANIN = 6
 TAU = 3.33
