@@ -1,4 +1,5 @@
 data/
 __pycache__/
 docs/
-*.pt
+.Xil/
+clockInfo.txt
