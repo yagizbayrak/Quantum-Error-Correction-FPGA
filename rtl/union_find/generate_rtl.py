@@ -7,7 +7,7 @@ import sys
 import stim
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[2] / "host" / "freeze"))
-from unionfind_hw import UnionFindHW
+from unionfind_hw import MAX_ITERATIONS, UnionFindHW
 
 
 def chunks(values, per):
@@ -38,6 +38,7 @@ def emit_params(hw, name):
         f"localparam int NODE_W = {hw.node_bits};",
         f"localparam int EDGE_W = {hw.edge_bits};",
         f"localparam int BOUNDARY = {hw.boundary};",
+        f"localparam int MAX_ITERATIONS = {MAX_ITERATIONS};",
         "",
     ]
     for field, end in (("EDGE_U", 0), ("EDGE_V", 1)):

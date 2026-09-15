@@ -7,6 +7,7 @@ localparam int EDGES = 78;
 localparam int NODE_W = 5;
 localparam int EDGE_W = 7;
 localparam int BOUNDARY = 24;
+localparam int MAX_ITERATIONS = 10;
 
 localparam logic [EDGES*NODE_W-1:0] EDGE_U = {
     5'd23, 5'd22, 5'd21, 5'd20, 5'd22, 5'd18, 5'd18, 5'd20, 5'd17, 5'd16, 5'd15, 5'd15, 5'd15,
