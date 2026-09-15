@@ -1,0 +1,177 @@
+{
+  "0": {
+    "basicblocks": 1,
+    "calls": "2 8",
+    "control_depth": 0,
+    "def_use_depth": 1,
+    "file": "recurrent.cpp",
+    "fileloc": 7,
+    "instructions": 45,
+    "memory_accesses": 0,
+    "name": "recurrent",
+    "total_instructions": 14283
+  },
+  "1": {
+    "basicblocks": 3,
+    "calls": "9 5 6 4 4",
+    "control_depth": 0,
+    "def_use_depth": 5,
+    "file": "nnet_recurrent.h",
+    "fileloc": 118,
+    "instructions": 3208,
+    "loads": {
+      "G": 32,
+      "L": 416
+    },
+    "memory_accesses": 0,
+    "name": "lstm_static<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2, false>",
+    "stores": {
+      "G": 128,
+      "L": 192
+    },
+    "total_instructions": 13932
+  },
+  "2": {
+    "basicblocks": 3,
+    "calls": "1",
+    "control_depth": 0,
+    "def_use_depth": 5,
+    "file": "nnet_recurrent.h",
+    "fileloc": 223,
+    "instructions": 242,
+    "loads": {
+      "L": 33
+    },
+    "memory_accesses": 9,
+    "name": "lstm_stack<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2>",
+    "stores": {
+      "L": 104
+    },
+    "total_instructions": 14174
+  },
+  "3": {
+    "basicblocks": 1,
+    "calls": "",
+    "control_depth": 0,
+    "def_use_depth": 0,
+    "file": "nnet_mult.h",
+    "fileloc": 110,
+    "instructions": 2,
+    "memory_accesses": 0,
+    "name": "cast<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2_1>",
+    "stores": {
+      "L": 1
+    },
+    "total_instructions": 2
+  },
+  "4": {
+    "basicblocks": 65,
+    "calls": "",
+    "control_depth": 1,
+    "def_use_depth": 15,
+    "file": "nnet_activation.h",
+    "fileloc": 438,
+    "instructions": 993,
+    "loads": {
+      "G": 32,
+      "L": 32
+    },
+    "memory_accesses": 96,
+    "name": "tanh<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, tanh_config2>",
+    "stores": {
+      "L": 32
+    },
+    "total_instructions": 993
+  },
+  "5": {
+    "basicblocks": 449,
+    "calls": "7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7",
+    "control_depth": 5,
+    "def_use_depth": 8,
+    "file": "nnet_dense_resource.h",
+    "fileloc": 87,
+    "instructions": 3192,
+    "loads": {
+      "G": 34,
+      "L": 128
+    },
+    "memory_accesses": 4,
+    "name": "dense_resource_rf_gt_nin_rem0<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2_2>",
+    "stores": {
+      "L": 128
+    },
+    "total_instructions": 3448
+  },
+  "6": {
+    "basicblocks": 193,
+    "calls": "",
+    "control_depth": 1,
+    "def_use_depth": 15,
+    "file": "nnet_activation.h",
+    "fileloc": 95,
+    "instructions": 2977,
+    "loads": {
+      "G": 96,
+      "L": 96
+    },
+    "memory_accesses": 288,
+    "name": "sigmoid<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, sigmoid_config2_recr>",
+    "stores": {
+      "L": 96
+    },
+    "total_instructions": 2977
+  },
+  "7": {
+    "basicblocks": 1,
+    "calls": "",
+    "control_depth": 0,
+    "def_use_depth": 0,
+    "file": "nnet_mult.h",
+    "fileloc": 110,
+    "instructions": 2,
+    "memory_accesses": 0,
+    "name": "cast<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2_2>",
+    "stores": {
+      "L": 1
+    },
+    "total_instructions": 2
+  },
+  "8": {
+    "basicblocks": 3,
+    "calls": "",
+    "control_depth": 0,
+    "def_use_depth": 3,
+    "file": "nnet_dense_resource.h",
+    "fileloc": 13,
+    "instructions": 64,
+    "loads": {
+      "G": 1,
+      "L": 32
+    },
+    "memory_accesses": 1,
+    "name": "dense_resource_rf_leq_nin<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config3>",
+    "stores": {
+      "L": 1
+    },
+    "total_instructions": 64
+  },
+  "9": {
+    "basicblocks": 305,
+    "calls": "3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3",
+    "control_depth": 5,
+    "def_use_depth": 8,
+    "file": "nnet_dense_resource.h",
+    "fileloc": 87,
+    "instructions": 2057,
+    "loads": {
+      "G": 2,
+      "L": 129
+    },
+    "memory_accesses": 5,
+    "name": "dense_resource_rf_gt_nin_rem0<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2_1>",
+    "stores": {
+      "L": 128
+    },
+    "total_instructions": 2313
+  }
+}

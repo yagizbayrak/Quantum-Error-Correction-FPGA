@@ -1,0 +1,62 @@
+Backend: Vitis
+ClockPeriod: 4
+ClockUncertainty: 27%
+HLSConfig:
+  LayerName:
+    dense:
+      Precision:
+        accum: auto
+        bias: fixed<9,2,RND,WRAP>
+        result: fixed<14,7,RND,WRAP>
+        weight: fixed<10,3,RND,WRAP>
+      ReuseFactor: 64
+      Strategy: Resource
+      Trace: false
+    input_layer:
+      Precision:
+        result: fixed<14,7,RND,WRAP>
+      Trace: false
+    lstm:
+      Precision:
+        accum: fixed<14,7,RND,WRAP>
+        bias: fixed<10,3,RND,WRAP>
+        recurrent_bias: fixed<10,3,RND,WRAP>
+        recurrent_weight: fixed<11,4,RND,WRAP>
+        result: fixed<14,7,RND,WRAP>
+        table: fixed<18,8,TRN,WRAP,0>
+        weight: fixed<13,6,RND,WRAP>
+      RecurrentReuseFactor: 64
+      ReuseFactor: 64
+      Static: true
+      Strategy: Resource
+      TableSize: 1024
+      Trace: false
+  Model:
+    BitExact: null
+    BramFactor: 1000000000
+    Precision: fixed<14,7,RND,WRAP>
+    ReuseFactor: 64
+    Strategy: Resource
+    TraceOutput: false
+IOType: io_parallel
+InputData: null
+InputShapes:
+  input_layer:
+  - 4
+  - 8
+KerasModel: !keras_model '/mnt/c/Users/yagiz/.vscode/Projects/Quantum-Error-Correction-FPGA-higher/Quantum-Error-Correction-FPGA/build/recurrent/keras_model.keras'
+OutputDir: /mnt/c/Users/yagiz/.vscode/Projects/Quantum-Error-Correction-FPGA-higher/Quantum-Error-Correction-FPGA/build/recurrent
+OutputPredictions: null
+OutputShapes:
+  layer3_out:
+  - 1
+Part: xc7a100tcsg324-1
+ProjectName: recurrent
+Stamp: d30b7dc1
+Version: 1.0.0
+WriterConfig:
+  Namespace: null
+  TBOutputStream: both
+  WriteEmulationConstants: false
+  WriteTar: false
+  WriteWeightsTxt: true

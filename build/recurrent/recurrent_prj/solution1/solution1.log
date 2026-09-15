@@ -1,0 +1,492 @@
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2026.1 (64-bit)
+Tool Version Limit: 2026.06
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+==============================================================
+INFO: [HLS 200-1510] Running: config_array_partition -maximum_size 4096 
+ERROR: [HLS 200-101] config_array_partition: Unknown option '-maximum_size'.
+ERROR: [HLS 200-101] config_array_partition: Unknown option '4096'.
+INFO: [HLS 200-1510] Running: config_compile -name_max_length 80 
+INFO: [XFORM 203-1161] The maximum of name length is set to 80.
+INFO: [HLS 200-1510] Running: set_part xc7a100tcsg324-1 
+INFO: [HLS 200-1611] Setting target device to 'xc7a100t-csg324-1'
+INFO: [XFORM 203-1161] The maximum of name length is set to 80.
+INFO: [HLS 200-1510] Running: config_schedule -enable_dsp_full_reg=false 
+INFO: [HLS 200-1510] Running: create_clock -period 4 -name default 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 4ns.
+INFO: [HLS 200-1510] Running: set_clock_uncertainty 27% default 
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 1.08ns.
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 1 seconds. Elapsed time: 1.913 seconds; current allocated memory: 157.324 MB.
+INFO: [HLS 200-2191] C-Synthesis will use clang-16 as the compiler
+INFO: [HLS 200-10] Analyzing design file 'firmware/recurrent.cpp' ... 
+WARNING: [HLS 207-6996] 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead (firmware/nnet_utils/nnet_dense_resource.h:33:13)
+WARNING: [HLS 207-6996] 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead (firmware/nnet_utils/nnet_dense_resource.h:107:13)
+WARNING: [HLS 207-6996] 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead (firmware/nnet_utils/nnet_dense_resource.h:189:13)
+WARNING: [HLS 207-7036] unexpected pragma argument 'softmax', expects function/operation (firmware/nnet_utils/nnet_activation.h:402:36)
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body (firmware/recurrent.cpp:39:75)
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body (firmware/recurrent.cpp:39:79)
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body (firmware/recurrent.cpp:39:84)
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body (firmware/recurrent.cpp:39:88)
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body (firmware/recurrent.cpp:41:70)
+WARNING: [HLS 214-113] Either use an argument of the function or declare the variable inside the dataflow loop body (firmware/recurrent.cpp:41:74)
+WARNING: [HLS 200-471] Dataflow form checks found 6 issue(s) in file firmware/recurrent.cpp
+WARNING: [HLS 207-6591] unused parameter 'keep' (firmware/nnet_utils/nnet_helpers.h:285:99)
+WARNING: [HLS 207-6591] unused parameter 'data' (firmware/nnet_utils/nnet_function_stubs.h:14:36)
+WARNING: [HLS 207-6591] unused parameter 'buffer' (firmware/nnet_utils/nnet_function_stubs.h:15:36)
+WARNING: [HLS 207-6591] unused parameter 'partition' (firmware/nnet_utils/nnet_function_stubs.h:16:44)
+WARNING: [HLS 207-6591] unused parameter 'data' (firmware/nnet_utils/nnet_function_stubs.h:24:24)
+WARNING: [HLS 207-6591] unused parameter 'buffer' (firmware/nnet_utils/nnet_function_stubs.h:25:24)
+WARNING: [HLS 207-6591] unused parameter 'partition' (firmware/nnet_utils/nnet_function_stubs.h:26:32)
+WARNING: [HLS 207-6591] unused parameter 'data' (firmware/nnet_utils/nnet_function_stubs.h:33:30)
+WARNING: [HLS 207-6591] unused parameter 'res' (firmware/nnet_utils/nnet_function_stubs.h:33:58)
+WARNING: [HLS 207-6591] unused parameter 'weights' (firmware/nnet_utils/nnet_function_stubs.h:34:51)
+WARNING: [HLS 207-6591] unused parameter 'biases' (firmware/nnet_utils/nnet_function_stubs.h:35:49)
+WARNING: [HLS 207-6591] unused parameter 'data' (firmware/nnet_utils/nnet_function_stubs.h:42:30)
+WARNING: [HLS 207-6591] unused parameter 'res' (firmware/nnet_utils/nnet_function_stubs.h:42:58)
+WARNING: [HLS 207-6591] unused parameter 'weights' (firmware/nnet_utils/nnet_function_stubs.h:43:51)
+WARNING: [HLS 207-6591] unused parameter 'biases' (firmware/nnet_utils/nnet_function_stubs.h:44:49)
+WARNING: [HLS 207-6591] unused parameter 'data' (firmware/nnet_utils/nnet_function_stubs.h:51:29)
+WARNING: [HLS 207-6591] unused parameter 'res' (firmware/nnet_utils/nnet_function_stubs.h:51:80)
+WARNING: [HLS 207-6591] unused parameter 'weights' (firmware/nnet_utils/nnet_function_stubs.h:52:50)
+WARNING: [HLS 207-6591] unused parameter 'biases' (firmware/nnet_utils/nnet_function_stubs.h:53:48)
+WARNING: [HLS 207-6591] unused parameter 'data' (firmware/nnet_utils/nnet_code_gen.h:16:39)
+WARNING: [HLS 207-6591] unused parameter 'res' (firmware/nnet_utils/nnet_code_gen.h:17:38)
+WARNING: [HLS 207-6591] unused parameter 'weights' (firmware/nnet_utils/nnet_code_gen.h:18:60)
+WARNING: [HLS 207-6591] unused parameter 'biases' (firmware/nnet_utils/nnet_code_gen.h:19:58)
+WARNING: [HLS 207-6591] unused parameter 'data' (firmware/nnet_utils/nnet_recr_activations.h:19:35)
+WARNING: [HLS 207-6591] unused parameter 'res' (firmware/nnet_utils/nnet_recr_activations.h:19:63)
+WARNING: [HLS 207-6591] unused parameter 'reset_state' (firmware/nnet_utils/nnet_recurrent.h:54:16)
+WARNING: [HLS 207-6591] unused parameter 'reset_state' (firmware/nnet_utils/nnet_recurrent.h:396:15)
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 1 seconds. CPU system time: 1 seconds. Elapsed time: 12.71 seconds; current allocated memory: 165.367 MB.
+INFO: [HLS 200-1995] There were 35,053 instructions in the design after the 'Compile/Link' phase of compilation. See the Design Size Report for more details (C:/Users/yagiz/.vscode/Projects/Quantum-Error-Correction-FPGA-higher/Quantum-Error-Correction-FPGA/build/recurrent/recurrent_prj/solution1/syn/report/csynth_design_size.rpt:2)
+WARNING: [HLS 214-273] In function 'void nnet::dense<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config3>(ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, config3::weight_t*, config3::bias_t*)', INLINE (firmware/nnet_utils/nnet_dense.h:44:1) of a non dataflow function into a region with DATAFLOW (firmware/recurrent.cpp:16:1) may break the canonical form (firmware/nnet_utils/nnet_dense.h:43:0)
+WARNING: [HLS 214-273] In function 'nnet::DenseResource_rf_leq_nin<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config3>::dense(ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, ap_fixed<10, 3, (ap_q_mode)0, (ap_o_mode)3, 0>*, ap_fixed<9, 2, (ap_q_mode)0, (ap_o_mode)3, 0>*)', INLINE (firmware/nnet_utils/nnet_dense.h:64:1) of a non dataflow function into a region with DATAFLOW (firmware/recurrent.cpp:16:1) may break the canonical form (firmware/nnet_utils/nnet_dense.h:63:0)
+INFO: [HLS 214-131] Inlining function 'nnet::product::mult<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<13, 6, (ap_q_mode)0, (ap_o_mode)3, 0> >::product(ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<13, 6, (ap_q_mode)0, (ap_o_mode)3, 0>)' into 'void nnet::dense_resource_rf_gt_nin_rem0<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2_1>(ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, config2_1::weight_t*, config2_1::bias_t*)' (firmware/nnet_utils/nnet_dense_resource.h:145:17)
+INFO: [HLS 214-131] Inlining function 'nnet::DenseResource_rf_gt_nin_rem0<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2_1>::dense(ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, ap_fixed<13, 6, (ap_q_mode)0, (ap_o_mode)3, 0>*, ap_fixed<10, 3, (ap_q_mode)0, (ap_o_mode)3, 0>*)' into 'void nnet::dense<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2_1>(ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, config2_1::weight_t*, config2_1::bias_t*)' (firmware/nnet_utils/nnet_dense.h:45:5)
+INFO: [HLS 214-131] Inlining function 'nnet::product::mult<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<11, 4, (ap_q_mode)0, (ap_o_mode)3, 0> >::product(ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<11, 4, (ap_q_mode)0, (ap_o_mode)3, 0>)' into 'void nnet::dense_resource_rf_gt_nin_rem0<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2_2>(ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, config2_2::weight_t*, config2_2::bias_t*)' (firmware/nnet_utils/nnet_dense_resource.h:145:17)
+INFO: [HLS 214-131] Inlining function 'nnet::DenseResource_rf_gt_nin_rem0<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2_2>::dense(ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, ap_fixed<11, 4, (ap_q_mode)0, (ap_o_mode)3, 0>*, ap_fixed<10, 3, (ap_q_mode)0, (ap_o_mode)3, 0>*)' into 'void nnet::dense<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2_2>(ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, config2_2::weight_t*, config2_2::bias_t*)' (firmware/nnet_utils/nnet_dense.h:45:5)
+INFO: [HLS 214-131] Inlining function 'void nnet::dense<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2_1>(ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, config2_1::weight_t*, config2_1::bias_t*)' into 'void nnet::lstm_static<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2, false>(bool, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, config2::weight_t*, config2::recurrent_weight_t*, config2::bias_t*, config2::recurrent_bias_t*)' (firmware/nnet_utils/nnet_recurrent.h:154:5)
+INFO: [HLS 214-131] Inlining function 'void nnet::dense<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2_2>(ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, config2_2::weight_t*, config2_2::bias_t*)' into 'void nnet::lstm_static<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2, false>(bool, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, config2::weight_t*, config2::recurrent_weight_t*, config2::bias_t*, config2::recurrent_bias_t*)' (firmware/nnet_utils/nnet_recurrent.h:155:5)
+INFO: [HLS 214-131] Inlining function 'nnet::product::mult<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<10, 3, (ap_q_mode)0, (ap_o_mode)3, 0> >::product(ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<10, 3, (ap_q_mode)0, (ap_o_mode)3, 0>)' into 'void nnet::dense_resource_rf_leq_nin<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config3>(ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, config3::weight_t*, config3::bias_t*)' (firmware/nnet_utils/nnet_dense_resource.h:59:17)
+INFO: [HLS 214-131] Inlining function 'nnet::DenseResource_rf_leq_nin<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config3>::dense(ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, ap_fixed<10, 3, (ap_q_mode)0, (ap_o_mode)3, 0>*, ap_fixed<9, 2, (ap_q_mode)0, (ap_o_mode)3, 0>*)' into 'void nnet::dense<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config3>(ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, config3::weight_t*, config3::bias_t*)' (firmware/nnet_utils/nnet_dense.h:45:5)
+INFO: [HLS 214-131] Inlining function 'void nnet::dense<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config3>(ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, config3::weight_t*, config3::bias_t*)' into 'recurrent(ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*)' (firmware/recurrent.cpp:41:5)
+INFO: [HLS 214-291] Loop 'MultLoop' is marked as complete unroll implied by the pipeline pragma (firmware/nnet_utils/nnet_dense_resource.h:55:9)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_457_1' is marked as complete unroll implied by the pipeline pragma (firmware/nnet_utils/nnet_activation.h:457:23)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_114_1' is marked as complete unroll implied by the pipeline pragma (firmware/nnet_utils/nnet_activation.h:114:23)
+INFO: [HLS 214-291] Loop 'MultLoop' is marked as complete unroll implied by the pipeline pragma (firmware/nnet_utils/nnet_dense_resource.h:142:9)
+INFO: [HLS 214-186] Unrolling loop 'Result' (firmware/nnet_utils/nnet_dense_resource.h:80:5) in function 'nnet::dense_resource_rf_leq_nin<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config3>' completely with a factor of 1 (firmware/nnet_utils/nnet_dense_resource.h:15:0)
+INFO: [HLS 214-186] Unrolling loop 'MultLoop' (firmware/nnet_utils/nnet_dense_resource.h:55:9) in function 'nnet::dense_resource_rf_leq_nin<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config3>' completely with a factor of 1 (firmware/nnet_utils/nnet_dense_resource.h:15:0)
+INFO: [HLS 214-186] Unrolling loop 'InitAccum' (firmware/nnet_utils/nnet_dense_resource.h:40:5) in function 'nnet::dense_resource_rf_leq_nin<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config3>' completely with a factor of 1 (firmware/nnet_utils/nnet_dense_resource.h:15:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_261_5' (firmware/nnet_utils/nnet_recurrent.h:261:27) in function 'nnet::lstm_stack<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2>' completely with a factor of 32 (firmware/nnet_utils/nnet_recurrent.h:227:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_243_3' (firmware/nnet_utils/nnet_recurrent.h:243:27) in function 'nnet::lstm_stack<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2>' completely with a factor of 8 (firmware/nnet_utils/nnet_recurrent.h:227:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_237_1' (firmware/nnet_utils/nnet_recurrent.h:237:23) in function 'nnet::lstm_stack<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2>' completely with a factor of 32 (firmware/nnet_utils/nnet_recurrent.h:227:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_188_5' (firmware/nnet_utils/nnet_recurrent.h:188:23) in function 'nnet::lstm_static<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2, false>' completely with a factor of 32 (firmware/nnet_utils/nnet_recurrent.h:123:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_179_4' (firmware/nnet_utils/nnet_recurrent.h:179:23) in function 'nnet::lstm_static<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2, false>' completely with a factor of 32 (firmware/nnet_utils/nnet_recurrent.h:123:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_165_3' (firmware/nnet_utils/nnet_recurrent.h:165:23) in function 'nnet::lstm_static<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2, false>' completely with a factor of 32 (firmware/nnet_utils/nnet_recurrent.h:123:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_158_2' (firmware/nnet_utils/nnet_recurrent.h:158:23) in function 'nnet::lstm_static<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2, false>' completely with a factor of 96 (firmware/nnet_utils/nnet_recurrent.h:123:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_148_1' (firmware/nnet_utils/nnet_recurrent.h:148:27) in function 'nnet::lstm_static<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2, false>' completely with a factor of 32 (firmware/nnet_utils/nnet_recurrent.h:123:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_457_1' (firmware/nnet_utils/nnet_activation.h:457:23) in function 'nnet::tanh<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, tanh_config2>' completely with a factor of 32 (firmware/nnet_utils/nnet_activation.h:438:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_114_1' (firmware/nnet_utils/nnet_activation.h:114:23) in function 'nnet::sigmoid<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, sigmoid_config2_recr>' completely with a factor of 96 (firmware/nnet_utils/nnet_activation.h:95:0)
+INFO: [HLS 214-186] Unrolling loop 'Result' (firmware/nnet_utils/nnet_dense_resource.h:162:5) in function 'nnet::dense_resource_rf_gt_nin_rem0<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2_2>' completely with a factor of 128 (firmware/nnet_utils/nnet_dense_resource.h:89:0)
+INFO: [HLS 214-186] Unrolling loop 'MultLoop' (firmware/nnet_utils/nnet_dense_resource.h:142:9) in function 'nnet::dense_resource_rf_gt_nin_rem0<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2_2>' completely with a factor of 64 (firmware/nnet_utils/nnet_dense_resource.h:89:0)
+INFO: [HLS 214-186] Unrolling loop 'InitAccum' (firmware/nnet_utils/nnet_dense_resource.h:114:5) in function 'nnet::dense_resource_rf_gt_nin_rem0<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2_2>' completely with a factor of 128 (firmware/nnet_utils/nnet_dense_resource.h:89:0)
+INFO: [HLS 214-186] Unrolling loop 'Result' (firmware/nnet_utils/nnet_dense_resource.h:162:5) in function 'nnet::dense_resource_rf_gt_nin_rem0<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2_1>' completely with a factor of 128 (firmware/nnet_utils/nnet_dense_resource.h:89:0)
+INFO: [HLS 214-186] Unrolling loop 'MultLoop' (firmware/nnet_utils/nnet_dense_resource.h:142:9) in function 'nnet::dense_resource_rf_gt_nin_rem0<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2_1>' completely with a factor of 16 (firmware/nnet_utils/nnet_dense_resource.h:89:0)
+INFO: [HLS 214-186] Unrolling loop 'InitAccum' (firmware/nnet_utils/nnet_dense_resource.h:114:5) in function 'nnet::dense_resource_rf_gt_nin_rem0<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2_1>' completely with a factor of 128 (firmware/nnet_utils/nnet_dense_resource.h:89:0)
+INFO: [HLS 200-1995] There were 28,291 instructions in the design after the 'Unroll/Inline' phase of compilation. See the Design Size Report for more details (C:/Users/yagiz/.vscode/Projects/Quantum-Error-Correction-FPGA-higher/Quantum-Error-Correction-FPGA/build/recurrent/recurrent_prj/solution1/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 14,344 instructions in the design after the 'Unroll/Inline (step 2)' phase of compilation. See the Design Size Report for more details (C:/Users/yagiz/.vscode/Projects/Quantum-Error-Correction-FPGA-higher/Quantum-Error-Correction-FPGA/build/recurrent/recurrent_prj/solution1/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 214-178] Inlining function 'nnet::activation::sigmoid<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, sigmoid_config2_recr>::activation(ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*)' into 'void nnet::lstm_static<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2, false>(bool, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, config2::weight_t*, config2::recurrent_weight_t*, config2::bias_t*, config2::recurrent_bias_t*)' (firmware/nnet_utils/nnet_recurrent.h:123:0)
+INFO: [HLS 214-178] Inlining function 'nnet::activation::tanh<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, tanh_config2>::activation(ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*) (.47)' into 'void nnet::lstm_static<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2, false>(bool, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, config2::weight_t*, config2::recurrent_weight_t*, config2::bias_t*, config2::recurrent_bias_t*)' (firmware/nnet_utils/nnet_recurrent.h:123:0)
+INFO: [HLS 214-178] Inlining function 'std::enable_if<!(std::is_same<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_uint<1> >::value), ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0> >::type nnet::cast<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config3>(config3::accum_t)' into 'void nnet::dense_resource_rf_leq_nin<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config3>(ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>*, config3::weight_t*, config3::bias_t*)' (firmware/nnet_utils/nnet_dense_resource.h:15:0)
+INFO: [HLS 200-1995] There were 14,071 instructions in the design after the 'Unroll/Inline (step 3)' phase of compilation. See the Design Size Report for more details (C:/Users/yagiz/.vscode/Projects/Quantum-Error-Correction-FPGA-higher/Quantum-Error-Correction-FPGA/build/recurrent/recurrent_prj/solution1/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 14,065 instructions in the design after the 'Unroll/Inline (step 4)' phase of compilation. See the Design Size Report for more details (C:/Users/yagiz/.vscode/Projects/Quantum-Error-Correction-FPGA-higher/Quantum-Error-Correction-FPGA/build/recurrent/recurrent_prj/solution1/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 15,061 instructions in the design after the 'Array/Struct (step 1)' phase of compilation. See the Design Size Report for more details (C:/Users/yagiz/.vscode/Projects/Quantum-Error-Correction-FPGA-higher/Quantum-Error-Correction-FPGA/build/recurrent/recurrent_prj/solution1/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 14,177 instructions in the design after the 'Array/Struct (step 2)' phase of compilation. See the Design Size Report for more details (C:/Users/yagiz/.vscode/Projects/Quantum-Error-Correction-FPGA-higher/Quantum-Error-Correction-FPGA/build/recurrent/recurrent_prj/solution1/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 14,177 instructions in the design after the 'Array/Struct (step 3)' phase of compilation. See the Design Size Report for more details (C:/Users/yagiz/.vscode/Projects/Quantum-Error-Correction-FPGA-higher/Quantum-Error-Correction-FPGA/build/recurrent/recurrent_prj/solution1/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 14,603 instructions in the design after the 'Array/Struct (step 4)' phase of compilation. See the Design Size Report for more details (C:/Users/yagiz/.vscode/Projects/Quantum-Error-Correction-FPGA-higher/Quantum-Error-Correction-FPGA/build/recurrent/recurrent_prj/solution1/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 14,283 instructions in the design after the 'Array/Struct (step 5)' phase of compilation. See the Design Size Report for more details (C:/Users/yagiz/.vscode/Projects/Quantum-Error-Correction-FPGA-higher/Quantum-Error-Correction-FPGA/build/recurrent/recurrent_prj/solution1/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 13,899 instructions in the design after the 'Performance (step 1)' phase of compilation. See the Design Size Report for more details (C:/Users/yagiz/.vscode/Projects/Quantum-Error-Correction-FPGA-higher/Quantum-Error-Correction-FPGA/build/recurrent/recurrent_prj/solution1/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 13,609 instructions in the design after the 'Performance (step 2)' phase of compilation. See the Design Size Report for more details (C:/Users/yagiz/.vscode/Projects/Quantum-Error-Correction-FPGA-higher/Quantum-Error-Correction-FPGA/build/recurrent/recurrent_prj/solution1/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 13,609 instructions in the design after the 'Performance (step 3)' phase of compilation. See the Design Size Report for more details (C:/Users/yagiz/.vscode/Projects/Quantum-Error-Correction-FPGA-higher/Quantum-Error-Correction-FPGA/build/recurrent/recurrent_prj/solution1/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 13,609 instructions in the design after the 'Performance (step 4)' phase of compilation. See the Design Size Report for more details (C:/Users/yagiz/.vscode/Projects/Quantum-Error-Correction-FPGA-higher/Quantum-Error-Correction-FPGA/build/recurrent/recurrent_prj/solution1/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 13,611 instructions in the design after the 'HW Transforms (step 1)' phase of compilation. See the Design Size Report for more details (C:/Users/yagiz/.vscode/Projects/Quantum-Error-Correction-FPGA-higher/Quantum-Error-Correction-FPGA/build/recurrent/recurrent_prj/solution1/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 200-1995] There were 13,366 instructions in the design after the 'HW Transforms (step 2)' phase of compilation. See the Design Size Report for more details (C:/Users/yagiz/.vscode/Projects/Quantum-Error-Correction-FPGA-higher/Quantum-Error-Correction-FPGA/build/recurrent/recurrent_prj/solution1/syn/report/csynth_design_size.rpt:2)
+INFO: [HLS 214-248] Applying array_partition to '_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7config2Lb0EEEvbPT_PT0_S9_PNT1_8weight_tEPNSA_18recurrent_weight_tEPNSA_6bias_tEPNSA_16recurrent_bias_tEE7s_state': Complete partitioning on dimension 1. (firmware/nnet_utils/nnet_recurrent.h:125:0)
+INFO: [HLS 214-248] Applying array_partition to '_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7config2Lb0EEEvbPT_PT0_S9_PNT1_8weight_tEPNSA_18recurrent_weight_tEPNSA_6bias_tEPNSA_16recurrent_bias_tEE7h_state': Complete partitioning on dimension 1. (firmware/nnet_utils/nnet_recurrent.h:124:0)
+INFO: [HLS 214-248] Applying array_partition to 'b3': Complete partitioning on dimension 1. (firmware/weights/b3.h:12:0)
+INFO: [HLS 214-248] Applying array_partition to 'br2': Complete partitioning on dimension 1. (firmware/weights/br2.h:12:0)
+INFO: [HLS 214-248] Applying array_partition to 'b2': Complete partitioning on dimension 1. (firmware/weights/b2.h:12:0)
+INFO: [HLS 214-248] Applying array_partition to 'acc': Complete partitioning on dimension 1. (firmware/nnet_utils/nnet_dense_resource.h:110:32)
+INFO: [HLS 214-248] Applying array_partition to 'tmpres': Complete partitioning on dimension 1. (firmware/nnet_utils/nnet_recurrent.h:127:32)
+INFO: [HLS 214-248] Applying array_partition to 'tmpres_state': Complete partitioning on dimension 1. (firmware/nnet_utils/nnet_recurrent.h:128:32)
+INFO: [HLS 214-248] Applying array_partition to 'tmpres_ifo': Complete partitioning on dimension 1. (firmware/nnet_utils/nnet_recurrent.h:129:32)
+INFO: [HLS 214-248] Applying array_partition to 'tmpres_c': Complete partitioning on dimension 1. (firmware/nnet_utils/nnet_recurrent.h:130:32)
+INFO: [HLS 214-248] Applying array_partition to 'inputacc_ifo': Complete partitioning on dimension 1. (firmware/nnet_utils/nnet_recurrent.h:131:32)
+INFO: [HLS 214-248] Applying array_partition to 'inputacc_c': Complete partitioning on dimension 1. (firmware/nnet_utils/nnet_recurrent.h:132:32)
+INFO: [HLS 214-248] Applying array_partition to 's_actstate': Complete partitioning on dimension 1. (firmware/nnet_utils/nnet_recurrent.h:133:32)
+INFO: [HLS 214-248] Applying array_partition to 'h_newstate': Complete partitioning on dimension 1. (firmware/nnet_utils/nnet_recurrent.h:229:11)
+INFO: [HLS 214-248] Applying array_partition to 's_newstate': Complete partitioning on dimension 1. (firmware/nnet_utils/nnet_recurrent.h:230:11)
+INFO: [HLS 214-248] Applying array_partition to 'layer2_out': Complete partitioning on dimension 1. (firmware/recurrent.cpp:36:14)
+INFO: [HLS 214-248] Applying array_partition to 'layer3_out': Complete partitioning on dimension 1. (firmware/recurrent.cpp:10:0)
+INFO: [HLS 214-248] Applying array_reshape to 'wr2': Block reshaping with factor 64 on dimension 1. (firmware/weights/wr2.h:12:0)
+INFO: [HLS 214-248] Applying array_reshape to 'w2': Block reshaping with factor 16 on dimension 1. (firmware/weights/w2.h:12:0)
+INFO: [HLS 214-248] Applying array_reshape to 'input_layer': Complete reshaping on dimension 1. (firmware/recurrent.cpp:10:0)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 1 seconds. CPU system time: 1 seconds. Elapsed time: 21.046 seconds; current allocated memory: 169.219 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.018 seconds; current allocated memory: 169.219 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.835 seconds; current allocated memory: 187.547 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [XFORM 203-602] Inlining function 'nnet::cast<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2_1>' into 'nnet::dense_resource_rf_gt_nin_rem0<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2_1>' (firmware/nnet_utils/nnet_dense_resource.h:164) automatically.
+INFO: [XFORM 203-602] Inlining function 'nnet::cast<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2_2>' into 'nnet::dense_resource_rf_gt_nin_rem0<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2_2>' (firmware/nnet_utils/nnet_dense_resource.h:164) automatically.
+WARNING: [SYNCHK 200-23] firmware/nnet_utils/nnet_recurrent.h:245: variable-indexed range selection may cause suboptimal QoR.
+INFO: [SYNCHK 200-10] 0 error(s), 1 warning(s).
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.604 seconds; current allocated memory: 199.613 MB.
+INFO: [XFORM 203-602] Inlining function 'nnet::cast<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2_1>' into 'nnet::dense_resource_rf_gt_nin_rem0<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2_1>' (firmware/nnet_utils/nnet_dense_resource.h:164) automatically.
+INFO: [XFORM 203-602] Inlining function 'nnet::cast<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2_2>' into 'nnet::dense_resource_rf_gt_nin_rem0<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2_2>' (firmware/nnet_utils/nnet_dense_resource.h:164) automatically.
+INFO: [XFORM 203-712] Applying dataflow to function 'recurrent' (firmware/recurrent.cpp:36:1), detected/extracted 2 process function(s): 
+	 'nnet::lstm_stack<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2>'
+	 'nnet::dense_resource_rf_leq_nin<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config3>'.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (firmware/nnet_utils/nnet_activation.h:109:1) to (firmware/nnet_utils/nnet_activation.h:123:1) in function 'nnet::sigmoid<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, sigmoid_config2_recr>'... converting 193 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (firmware/nnet_utils/nnet_dense_resource.h:135:25) to (firmware/nnet_utils/nnet_dense_resource.h:135:5) in function 'nnet::dense_resource_rf_gt_nin_rem0<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2_2>'... converting 132 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (firmware/nnet_utils/nnet_dense_resource.h:135:25) to (firmware/nnet_utils/nnet_dense_resource.h:135:5) in function 'nnet::dense_resource_rf_gt_nin_rem0<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2_1>'... converting 273 basic blocks.
+INFO: [XFORM 203-11] Balancing expressions in function 'nnet::dense_resource_rf_gt_nin_rem0<ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<14, 7, (ap_q_mode)0, (ap_o_mode)3, 0>, config2_1>' (firmware/nnet_utils/nnet_dense_resource.h:73:28)...129 expression(s) balanced.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 3 seconds. CPU system time: 0 seconds. Elapsed time: 3.042 seconds; current allocated memory: 234.668 MB.
+WARNING: [HLS 200-1992] Performance of loop 'ReuseLoop'(firmware/nnet_utils/nnet_dense_resource.h:135:5) in function 'dense_resource_rf_gt_nin_rem0<ap_fixed,ap_fixed<14,7,0,3,0>,config2_2>' can be improved with loop rewind inference if the loop is called from a region that can be executed in overlapped fashion such as a dataflow region or the top function.
+WARNING: [HLS 200-1992] Performance of loop 'ReuseLoop'(firmware/nnet_utils/nnet_dense_resource.h:135:5) in function 'dense_resource_rf_gt_nin_rem0<ap_fixed,ap_fixed<14,7,0,3,0>,config2_1>' can be improved with loop rewind inference if the loop is called from a region that can be executed in overlapped fashion such as a dataflow region or the top function.
+INFO: [XFORM 203-531] Rewinding loop 'ReuseLoop' (firmware/nnet_utils/nnet_dense_resource.h:46) in function 'dense_resource_rf_leq_nin<ap_fixed,ap_fixed<14,7,0,3,0>,config3>'.
+INFO: [XFORM 203-531] Rewinding loop 'ReuseLoop' (firmware/nnet_utils/nnet_dense_resource.h:135) in function 'dense_resource_rf_gt_nin_rem0<ap_fixed,ap_fixed<14,7,0,3,0>,config2_2>'.
+INFO: [XFORM 203-531] Rewinding loop 'ReuseLoop' (firmware/nnet_utils/nnet_dense_resource.h:135) in function 'dense_resource_rf_gt_nin_rem0<ap_fixed,ap_fixed<14,7,0,3,0>,config2_1>'.
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 2.928 seconds; current allocated memory: 322.645 MB.
+INFO: [HLS 200-2255] Checking Wire Delay Status: Wire Delay Mode is ON
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'recurrent' ...
+WARNING: [SYN 201-103] Legalizing function name 'dense_resource_rf_gt_nin_rem0<ap_fixed,ap_fixed<14,7,0,3,0>,config2_1>' to 'dense_resource_rf_gt_nin_rem0_ap_fixed_ap_fixed_14_7_0_3_0_config2_1_s'.
+WARNING: [SYN 201-103] Legalizing function name 'dense_resource_rf_gt_nin_rem0<ap_fixed,ap_fixed<14,7,0,3,0>,config2_2>' to 'dense_resource_rf_gt_nin_rem0_ap_fixed_ap_fixed_14_7_0_3_0_config2_2_s'.
+WARNING: [SYN 201-103] Legalizing function name 'sigmoid<ap_fixed,ap_fixed<14,7,0,3,0>,sigmoid_config2_recr>' to 'sigmoid_ap_fixed_ap_fixed_14_7_0_3_0_sigmoid_config2_recr_s'.
+WARNING: [SYN 201-103] Legalizing function name 'tanh<ap_fixed<14, 7, 0, 3, 0>, ap_fixed<14, 7, 0, 3, 0>, tanh_config2>' to 'tanh_ap_fixed_14_7_0_3_0_ap_fixed_14_7_0_3_0_tanh_config2_s'.
+WARNING: [SYN 201-103] Legalizing function name 'lstm_static<ap_fixed<14, 7, 0, 3, 0>, ap_fixed<14, 7, 0, 3, 0>, config2, false>' to 'lstm_static_ap_fixed_14_7_0_3_0_ap_fixed_14_7_0_3_0_config2_false_s'.
+WARNING: [SYN 201-103] Legalizing function name 'lstm_stack<ap_fixed<14, 7, 0, 3, 0>, ap_fixed<14, 7, 0, 3, 0>, config2>' to 'lstm_stack_ap_fixed_14_7_0_3_0_ap_fixed_14_7_0_3_0_config2_s'.
+WARNING: [SYN 201-103] Legalizing function name 'dense_resource_rf_leq_nin<ap_fixed,ap_fixed<14,7,0,3,0>,config3>' to 'dense_resource_rf_leq_nin_ap_fixed_ap_fixed_14_7_0_3_0_config3_s'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'dense_resource_rf_gt_nin_rem0_ap_fixed_ap_fixed_14_7_0_3_0_config2_1_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'ReuseLoop'.
+WARNING: [HLS 200-887] Cannot meet target clock period from 'select' operation 32 bit ('in_index_6', firmware/nnet_utils/nnet_dense_resource.h:154) to 'add' operation 32 bit ('in_index', firmware/nnet_utils/nnet_dense_resource.h:153) (combination delay: 5.108 ns) to honor II or Latency constraint in region 'ReuseLoop'.
+WARNING: [HLS 200-887] Cannot meet target clock period from 'select' operation 14 bit ('x', firmware/nnet_utils/nnet_dense_resource.h:144) to 'sub' operation 15 bit ('sub_ln144', firmware/nnet_utils/nnet_dense_resource.h:144) (combination delay: 6.53082 ns) to honor II or Latency constraint in region 'ReuseLoop'.
+WARNING: [HLS 200-887] Cannot meet target clock period from 'sparsemux' operation 14 bit ('tmp_564', firmware/nnet_utils/nnet_dense_resource.h:144) to 'select' operation 14 bit ('acc', firmware/nnet_utils/nnet_dense_resource.h:144) (combination delay: 7.06295 ns) to honor II or Latency constraint in region 'ReuseLoop'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 8, loop 'ReuseLoop'
+WARNING: [HLS 200-871] Estimated clock period (9.651 ns) exceeds the target (target clock period: 4.000 ns, clock uncertainty: 1.080 ns, effective delay budget: 2.920 ns).
+WARNING: [HLS 200-1016] The critical path in module 'dense_resource_rf_gt_nin_rem0_ap_fixed_ap_fixed_14_7_0_3_0_config2_1_s' consists of the following:
+	'or' operation 1 bit ('or_ln144_7', firmware/nnet_utils/nnet_dense_resource.h:144) [191]  (0.000 ns)
+	'or' operation 1 bit ('or_ln144_8', firmware/nnet_utils/nnet_dense_resource.h:144) [192]  (0.000 ns)
+	'select' operation 14 bit ('x', firmware/nnet_utils/nnet_dense_resource.h:144) [193]  (0.978 ns)
+	multiplexor before 'phi' operation 14 bit ('acc') with incoming values : ('x', firmware/nnet_utils/nnet_dense_resource.h:144) [16]  (1.610 ns)
+	'phi' operation 14 bit ('acc') with incoming values : ('x', firmware/nnet_utils/nnet_dense_resource.h:144) [16]  (0.000 ns)
+	'sparsemux' operation 14 bit ('tmp_s', firmware/nnet_utils/nnet_dense_resource.h:144) [162]  (1.805 ns)
+	'sub' operation 15 bit ('sub_ln144', firmware/nnet_utils/nnet_dense_resource.h:144) [166]  (2.138 ns)
+	'icmp' operation 1 bit ('icmp_ln144_70', firmware/nnet_utils/nnet_dense_resource.h:144) [174]  (2.142 ns)
+	'or' operation 1 bit ('or_ln144', firmware/nnet_utils/nnet_dense_resource.h:144) [175]  (0.000 ns)
+	'or' operation 1 bit ('or_ln144_2', firmware/nnet_utils/nnet_dense_resource.h:144) [177]  (0.000 ns)
+	'or' operation 1 bit ('or_ln144_6', firmware/nnet_utils/nnet_dense_resource.h:144) [181]  (0.000 ns)
+	'select' operation 14 bit ('acc', firmware/nnet_utils/nnet_dense_resource.h:144) [182]  (0.978 ns)
+
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.287 seconds; current allocated memory: 342.273 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.192 seconds; current allocated memory: 343.355 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'dense_resource_rf_gt_nin_rem0_ap_fixed_ap_fixed_14_7_0_3_0_config2_2_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'ReuseLoop'.
+WARNING: [HLS 200-887] Cannot meet target clock period from 'add' operation 14 bit ('acc', firmware/nnet_utils/nnet_dense_resource.h:144) to 'select' operation 14 bit ('select_ln144_149', firmware/nnet_utils/nnet_dense_resource.h:144) (combination delay: 5.14425 ns) to honor II or Latency constraint in region 'ReuseLoop'.
+WARNING: [HLS 200-887] Cannot meet target clock period from 'icmp' operation 1 bit ('icmp_ln144_8', firmware/nnet_utils/nnet_dense_resource.h:144) to 'select' operation 14 bit ('select_ln144_26', firmware/nnet_utils/nnet_dense_resource.h:144) (combination delay: 5.84612 ns) to honor II or Latency constraint in region 'ReuseLoop'.
+WARNING: [HLS 200-887] Cannot meet target clock period from 'add' operation 32 bit ('in_index', firmware/nnet_utils/nnet_dense_resource.h:153) to 'select' operation 32 bit ('in_index_4', firmware/nnet_utils/nnet_dense_resource.h:154) (combination delay: 6.02625 ns) to honor II or Latency constraint in region 'ReuseLoop'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 8, loop 'ReuseLoop'
+WARNING: [HLS 200-871] Estimated clock period (7.984 ns) exceeds the target (target clock period: 4.000 ns, clock uncertainty: 1.080 ns, effective delay budget: 2.920 ns).
+WARNING: [HLS 200-1016] The critical path in module 'dense_resource_rf_gt_nin_rem0_ap_fixed_ap_fixed_14_7_0_3_0_config2_2_s' consists of the following:
+	'select' operation 14 bit ('acc', firmware/nnet_utils/nnet_dense_resource.h:144) [296]  (0.698 ns)
+	'select' operation 14 bit ('x', firmware/nnet_utils/nnet_dense_resource.h:144) [306]  (0.698 ns)
+	multiplexor before 'phi' operation 14 bit ('acc') with incoming values : ('x', firmware/nnet_utils/nnet_dense_resource.h:144) [73]  (1.610 ns)
+	'phi' operation 14 bit ('acc') with incoming values : ('x', firmware/nnet_utils/nnet_dense_resource.h:144) [73]  (0.000 ns)
+	'select' operation 14 bit ('select_ln144', firmware/nnet_utils/nnet_dense_resource.h:144) [288]  (0.698 ns)
+	'sub' operation 15 bit ('sub_ln144', firmware/nnet_utils/nnet_dense_resource.h:144) [292]  (2.138 ns)
+	'icmp' operation 1 bit ('icmp_ln144', firmware/nnet_utils/nnet_dense_resource.h:144) [293]  (2.142 ns)
+
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 2.737 seconds; current allocated memory: 366.453 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.421 seconds; current allocated memory: 366.453 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'sigmoid_ap_fixed_ap_fixed_14_7_0_3_0_sigmoid_config2_recr_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'sigmoid<ap_fixed,ap_fixed<14,7,0,3,0>,sigmoid_config2_recr>'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 7, function 'sigmoid<ap_fixed,ap_fixed<14,7,0,3,0>,sigmoid_config2_recr>'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 1 seconds. Elapsed time: 1.11 seconds; current allocated memory: 373.508 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.507 seconds; current allocated memory: 373.633 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'tanh_ap_fixed_14_7_0_3_0_ap_fixed_14_7_0_3_0_tanh_config2_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'tanh<ap_fixed<14, 7, 0, 3, 0>, ap_fixed<14, 7, 0, 3, 0>, tanh_config2>'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 6, function 'tanh<ap_fixed<14, 7, 0, 3, 0>, ap_fixed<14, 7, 0, 3, 0>, tanh_config2>'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.621 seconds; current allocated memory: 377.359 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.13 seconds; current allocated memory: 378.164 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'lstm_static_ap_fixed_14_7_0_3_0_ap_fixed_14_7_0_3_0_config2_false_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.93 seconds; current allocated memory: 388.676 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.33 seconds; current allocated memory: 390.172 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'lstm_stack_ap_fixed_14_7_0_3_0_ap_fixed_14_7_0_3_0_config2_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+WARNING: [HLS 200-871] Estimated clock period (3.873 ns) exceeds the target (target clock period: 4.000 ns, clock uncertainty: 1.080 ns, effective delay budget: 2.920 ns).
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.491 seconds; current allocated memory: 391.691 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.092 seconds; current allocated memory: 392.438 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'dense_resource_rf_leq_nin_ap_fixed_ap_fixed_14_7_0_3_0_config3_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'ReuseLoop'.
+WARNING: [HLS 200-887] Cannot meet target clock period from 'add' operation 28 bit of DSP[152] ('add_ln58', firmware/nnet_utils/nnet_dense_resource.h:58->firmware/nnet_utils/nnet_dense.h:65->firmware/nnet_utils/nnet_dense.h:45->firmware/recurrent.cpp:41) to 'phi' operation 28 bit ('empty', firmware/nnet_utils/nnet_dense_resource.h:58->firmware/nnet_utils/nnet_dense.h:65->firmware/nnet_utils/nnet_dense.h:45->firmware/recurrent.cpp:41) with incoming values : ('add_ln58', firmware/nnet_utils/nnet_dense_resource.h:58->firmware/nnet_utils/nnet_dense.h:65->firmware/nnet_utils/nnet_dense.h:45->firmware/recurrent.cpp:41) (combination delay: 3.71 ns) to honor II or Latency constraint in region 'ReuseLoop'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 7, loop 'ReuseLoop'
+WARNING: [HLS 200-871] Estimated clock period (5.810 ns) exceeds the target (target clock period: 4.000 ns, clock uncertainty: 1.080 ns, effective delay budget: 2.920 ns).
+WARNING: [HLS 200-1016] The critical path in module 'dense_resource_rf_leq_nin_ap_fixed_ap_fixed_14_7_0_3_0_config3_s' consists of the following:
+	'add' operation 28 bit of DSP[152] ('add_ln58', firmware/nnet_utils/nnet_dense_resource.h:58->firmware/nnet_utils/nnet_dense.h:65->firmware/nnet_utils/nnet_dense.h:45->firmware/recurrent.cpp:41) [152]  (2.100 ns)
+	multiplexor before 'phi' operation 28 bit ('empty', firmware/nnet_utils/nnet_dense_resource.h:58->firmware/nnet_utils/nnet_dense.h:65->firmware/nnet_utils/nnet_dense.h:45->firmware/recurrent.cpp:41) with incoming values : ('add_ln58', firmware/nnet_utils/nnet_dense_resource.h:58->firmware/nnet_utils/nnet_dense.h:65->firmware/nnet_utils/nnet_dense.h:45->firmware/recurrent.cpp:41) [70]  (1.610 ns)
+	'phi' operation 28 bit ('empty', firmware/nnet_utils/nnet_dense_resource.h:58->firmware/nnet_utils/nnet_dense.h:65->firmware/nnet_utils/nnet_dense.h:45->firmware/recurrent.cpp:41) with incoming values : ('add_ln58', firmware/nnet_utils/nnet_dense_resource.h:58->firmware/nnet_utils/nnet_dense.h:65->firmware/nnet_utils/nnet_dense.h:45->firmware/recurrent.cpp:41) [70]  (0.000 ns)
+	'add' operation 28 bit of DSP[152] ('add_ln58', firmware/nnet_utils/nnet_dense_resource.h:58->firmware/nnet_utils/nnet_dense.h:65->firmware/nnet_utils/nnet_dense.h:45->firmware/recurrent.cpp:41) [152]  (2.100 ns)
+
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.429 seconds; current allocated memory: 393.664 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.059 seconds; current allocated memory: 394.332 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'recurrent' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.071 seconds; current allocated memory: 394.441 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.075 seconds; current allocated memory: 394.938 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'dense_resource_rf_gt_nin_rem0_ap_fixed_ap_fixed_14_7_0_3_0_config2_1_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'dense_resource_rf_gt_nin_rem0_ap_fixed_ap_fixed_14_7_0_3_0_config2_1_s_outidx_ROM_AUTO_1R' to 'dense_resource_rf_gt_nin_rem0_ap_fixed_ap_fixed_14_7_0_3_0_config2_1_s_outidxbkb' due to the length limit 80
+INFO: [SYN 201-210] Renamed object name 'dense_resource_rf_gt_nin_rem0_ap_fixed_ap_fixed_14_7_0_3_0_config2_1_s_w2_ROM_NP_BRAM_2R' to 'dense_resource_rf_gt_nin_rem0_ap_fixed_ap_fixed_14_7_0_3_0_config2_1_s_w2_ROMcud' due to the length limit 80
+INFO: [RTGEN 206-100] Generating core module 'mul_14s_11s_25_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_14s_13s_27_4_1': 15 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'sparsemux_17_3_14_1_1': 16 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'dense_resource_rf_gt_nin_rem0_ap_fixed_ap_fixed_14_7_0_3_0_config2_1_s'.
+INFO: [RTMG 210-279] Implementing memory 'recurrent_dense_resource_rf_gt_nin_rem0_ap_fixed_ap_fixed_14_7_0_3_0_config2_1_s_outidxbkb' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'recurrent_dense_resource_rf_gt_nin_rem0_ap_fixed_ap_fixed_14_7_0_3_0_config2_1_s_w2_ROMcud' using block ROMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 3 seconds. CPU system time: 0 seconds. Elapsed time: 2.544 seconds; current allocated memory: 463.910 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'dense_resource_rf_gt_nin_rem0_ap_fixed_ap_fixed_14_7_0_3_0_config2_2_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'dense_resource_rf_gt_nin_rem0_ap_fixed_ap_fixed_14_7_0_3_0_config2_2_s_outidx_4_ROM_AUTO_1R' to 'dense_resource_rf_gt_nin_rem0_ap_fixed_ap_fixed_14_7_0_3_0_config2_2_s_outidxdEe' due to the length limit 80
+INFO: [SYN 201-210] Renamed object name 'dense_resource_rf_gt_nin_rem0_ap_fixed_ap_fixed_14_7_0_3_0_config2_2_s_wr2_ROM_NP_BRAM_2R' to 'dense_resource_rf_gt_nin_rem0_ap_fixed_ap_fixed_14_7_0_3_0_config2_2_s_wr2_ROeOg' due to the length limit 80
+INFO: [RTGEN 206-100] Generating core module 'mul_14s_10s_24_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_14s_11s_25_4_1': 63 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'sparsemux_65_5_14_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'dense_resource_rf_gt_nin_rem0_ap_fixed_ap_fixed_14_7_0_3_0_config2_2_s'.
+INFO: [RTMG 210-279] Implementing memory 'recurrent_dense_resource_rf_gt_nin_rem0_ap_fixed_ap_fixed_14_7_0_3_0_config2_2_s_outidxdEe' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'recurrent_dense_resource_rf_gt_nin_rem0_ap_fixed_ap_fixed_14_7_0_3_0_config2_2_s_wr2_ROeOg' using block ROMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 2 seconds. CPU system time: 2 seconds. Elapsed time: 4.843 seconds; current allocated memory: 537.402 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'sigmoid_ap_fixed_ap_fixed_14_7_0_3_0_sigmoid_config2_recr_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'sigmoid_ap_fixed_ap_fixed_14_7_0_3_0_sigmoid_config2_recr_s_sigmoid_table_ROM_AUTO_2R' to 'sigmoid_ap_fixed_ap_fixed_14_7_0_3_0_sigmoid_config2_recr_s_sigmoid_table_ROMfYi' due to the length limit 80
+INFO: [RTGEN 206-104] Estimated max fanout for 'sigmoid_ap_fixed_ap_fixed_14_7_0_3_0_sigmoid_config2_recr_s' is 8544 from HDL expression: (1'b0 == ap_block_pp0_stage0_11001)
+INFO: [RTGEN 206-100] Finished creating RTL model for 'sigmoid_ap_fixed_ap_fixed_14_7_0_3_0_sigmoid_config2_recr_s'.
+INFO: [HLS 200-2168] Implementing memory 'recurrent_sigmoid_ap_fixed_ap_fixed_14_7_0_3_0_sigmoid_config2_recr_s_sigmoid_table_ROMfYi' using auto ROMs with 96 copies to ensure enough ports to satisfy II or latency constraints.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 6 seconds. CPU system time: 4 seconds. Elapsed time: 9.751 seconds; current allocated memory: 608.109 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'tanh_ap_fixed_14_7_0_3_0_ap_fixed_14_7_0_3_0_tanh_config2_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'tanh_ap_fixed_14_7_0_3_0_ap_fixed_14_7_0_3_0_tanh_config2_s_tanh_table_ROM_AUTO_2R' to 'tanh_ap_fixed_14_7_0_3_0_ap_fixed_14_7_0_3_0_tanh_config2_s_tanh_table_ROM_AUg8j' due to the length limit 80
+INFO: [RTGEN 206-100] Finished creating RTL model for 'tanh_ap_fixed_14_7_0_3_0_ap_fixed_14_7_0_3_0_tanh_config2_s'.
+INFO: [HLS 200-2168] Implementing memory 'recurrent_tanh_ap_fixed_14_7_0_3_0_ap_fixed_14_7_0_3_0_tanh_config2_s_tanh_table_ROM_AUg8j' using auto ROMs with 32 copies to ensure enough ports to satisfy II or latency constraints.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 2 seconds. CPU system time: 7 seconds. Elapsed time: 9.587 seconds; current allocated memory: 661.449 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'lstm_static_ap_fixed_14_7_0_3_0_ap_fixed_14_7_0_3_0_config2_false_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+WARNING: [RTGEN 206-101] Register 'void_lstm_static_bool_ap_fixed_ap_fixed_ap_fixed_weight_t_recurrent_weight_t_9' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'void_lstm_static_bool_ap_fixed_ap_fixed_ap_fixed_weight_t_recurrent_weight_t_8' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'void_lstm_static_bool_ap_fixed_ap_fixed_ap_fixed_weight_t_recurrent_weight_t_7' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'void_lstm_static_bool_ap_fixed_ap_fixed_ap_fixed_weight_t_recurrent_weight_t_6' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'void_lstm_static_bool_ap_fixed_ap_fixed_ap_fixed_weight_t_recurrent_weight_t_5' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'void_lstm_static_bool_ap_fixed_ap_fixed_ap_fixed_weight_t_recurrent_weight_t_4' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'void_lstm_static_bool_ap_fixed_ap_fixed_ap_fixed_weight_t_recurrent_weight_t_3' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'void_lstm_static_bool_ap_fixed_ap_fixed_ap_fixed_weight_t_recurrent_weight_t_2' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'void_lstm_static_bool_ap_fixed_ap_fixed_ap_fixed_weight_t_recurrent_weight_t_1' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'void_lstm_static_bool_ap_fixed_ap_fixed_ap_fixed_weight_t_recurrent_weight_t' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_21' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_20' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_19' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_18' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_17' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_16' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_15' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_14' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_13' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_12' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_11' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_10' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_9' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_8' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_7' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_6' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_5' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_4' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_3' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_2' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_1' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'void_lstm_static_bool_ap_fixed_ap_fixed_ap_fixed_weight_t_recurrent_weight_t_19' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'void_lstm_static_bool_ap_fixed_ap_fixed_ap_fixed_weight_t_recurrent_weight_t_18' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'void_lstm_static_bool_ap_fixed_ap_fixed_ap_fixed_weight_t_recurrent_weight_t_17' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'void_lstm_static_bool_ap_fixed_ap_fixed_ap_fixed_weight_t_recurrent_weight_t_16' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'void_lstm_static_bool_ap_fixed_ap_fixed_ap_fixed_weight_t_recurrent_weight_t_15' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'void_lstm_static_bool_ap_fixed_ap_fixed_ap_fixed_weight_t_recurrent_weight_t_14' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'void_lstm_static_bool_ap_fixed_ap_fixed_ap_fixed_weight_t_recurrent_weight_t_13' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'void_lstm_static_bool_ap_fixed_ap_fixed_ap_fixed_weight_t_recurrent_weight_t_12' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'void_lstm_static_bool_ap_fixed_ap_fixed_ap_fixed_weight_t_recurrent_weight_t_11' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'void_lstm_static_bool_ap_fixed_ap_fixed_ap_fixed_weight_t_recurrent_weight_t_10' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_43' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_42' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_41' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_40' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_39' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_38' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_37' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_36' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_35' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_34' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_33' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_32' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_31' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_30' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_29' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_28' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_27' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_26' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_25' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_24' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_23' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZN4nnet11lstm_staticI8ap_fixedILi14ELi7EL9ap_q_mode0EL9ap_o_mode3ELi0EES4_7con_22' is power-on initialization.
+INFO: [RTGEN 206-100] Generating core module 'mul_14s_14s_28_4_1': 96 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'lstm_static_ap_fixed_14_7_0_3_0_ap_fixed_14_7_0_3_0_config2_false_s'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 3 seconds. CPU system time: 1 seconds. Elapsed time: 5.907 seconds; current allocated memory: 753.961 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'lstm_stack_ap_fixed_14_7_0_3_0_ap_fixed_14_7_0_3_0_config2_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'lstm_stack_ap_fixed_14_7_0_3_0_ap_fixed_14_7_0_3_0_config2_s_data_in_RAM_AUTO_1R1W' to 'lstm_stack_ap_fixed_14_7_0_3_0_ap_fixed_14_7_0_3_0_config2_s_data_in_RAM_AUTOhbi' due to the length limit 80
+INFO: [RTGEN 206-100] Generating core module 'partselect_14ns_448ns_9ns_14_2_1': 8 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'lstm_stack_ap_fixed_14_7_0_3_0_ap_fixed_14_7_0_3_0_config2_s'.
+INFO: [RTMG 210-278] Implementing memory 'recurrent_lstm_stack_ap_fixed_14_7_0_3_0_ap_fixed_14_7_0_3_0_config2_s_data_in_RAM_AUTOhbi' using auto RAMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 5 seconds. Elapsed time: 5.538 seconds; current allocated memory: 786.168 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'dense_resource_rf_leq_nin_ap_fixed_ap_fixed_14_7_0_3_0_config3_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'dense_resource_rf_leq_nin_ap_fixed_ap_fixed_14_7_0_3_0_config3_s_w3_ROM_NP_BRAM_2R' to 'dense_resource_rf_leq_nin_ap_fixed_ap_fixed_14_7_0_3_0_config3_s_w3_ROM_NP_BRibs' due to the length limit 80
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_14s_10s_28s_28_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'sparsemux_65_5_14_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'dense_resource_rf_leq_nin_ap_fixed_ap_fixed_14_7_0_3_0_config3_s'.
+INFO: [RTMG 210-279] Implementing memory 'recurrent_dense_resource_rf_leq_nin_ap_fixed_ap_fixed_14_7_0_3_0_config3_s_w3_ROM_NP_BRibs' using block ROMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.687 seconds; current allocated memory: 794.535 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'recurrent' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'recurrent/input_layer' to 'ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'recurrent/layer3_out' to 'ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'recurrent' to 'ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'recurrent'.
+INFO: [RTMG 210-285] Implementing FIFO 'layer2_out_U(recurrent_fifo_w14_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'layer2_out_1_U(recurrent_fifo_w14_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'layer2_out_2_U(recurrent_fifo_w14_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'layer2_out_3_U(recurrent_fifo_w14_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'layer2_out_4_U(recurrent_fifo_w14_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'layer2_out_5_U(recurrent_fifo_w14_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'layer2_out_6_U(recurrent_fifo_w14_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'layer2_out_7_U(recurrent_fifo_w14_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'layer2_out_8_U(recurrent_fifo_w14_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'layer2_out_9_U(recurrent_fifo_w14_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'layer2_out_10_U(recurrent_fifo_w14_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'layer2_out_11_U(recurrent_fifo_w14_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'layer2_out_12_U(recurrent_fifo_w14_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'layer2_out_13_U(recurrent_fifo_w14_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'layer2_out_14_U(recurrent_fifo_w14_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'layer2_out_15_U(recurrent_fifo_w14_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'layer2_out_16_U(recurrent_fifo_w14_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'layer2_out_17_U(recurrent_fifo_w14_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'layer2_out_18_U(recurrent_fifo_w14_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'layer2_out_19_U(recurrent_fifo_w14_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'layer2_out_20_U(recurrent_fifo_w14_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'layer2_out_21_U(recurrent_fifo_w14_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'layer2_out_22_U(recurrent_fifo_w14_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'layer2_out_23_U(recurrent_fifo_w14_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'layer2_out_24_U(recurrent_fifo_w14_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'layer2_out_25_U(recurrent_fifo_w14_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'layer2_out_26_U(recurrent_fifo_w14_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'layer2_out_27_U(recurrent_fifo_w14_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'layer2_out_28_U(recurrent_fifo_w14_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'layer2_out_29_U(recurrent_fifo_w14_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'layer2_out_30_U(recurrent_fifo_w14_d2_S)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'layer2_out_31_U(recurrent_fifo_w14_d2_S)' using Shift Registers.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 1 seconds. Elapsed time: 1.116 seconds; current allocated memory: 799.328 MB.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.712 seconds; current allocated memory: 801.836 MB.
+INFO: [HLS 200-2225] Wrote inferred directives to file C:/Users/yagiz/.vscode/Projects/Quantum-Error-Correction-FPGA-higher/Quantum-Error-Correction-FPGA/build/recurrent/recurrent_prj/solution1/syn/inferred_directives.ini
+INFO: [HLS 200-111] Finished Updating report files: CPU user time: 1 seconds. CPU system time: 2 seconds. Elapsed time: 4.034 seconds; current allocated memory: 832.371 MB.
+INFO: [VHDL 208-304] Generating VHDL RTL for recurrent.
+INFO: [VLOG 209-307] Generating Verilog RTL for recurrent.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 103.62 MHz
+INFO: [HLS 200-2161] Finished Command csynth_design Elapsed time: 00:01:39; Allocated memory: 675.215 MB.

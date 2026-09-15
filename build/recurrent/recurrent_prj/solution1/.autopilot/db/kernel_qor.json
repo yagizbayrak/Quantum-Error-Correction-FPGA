@@ -1,0 +1,186 @@
+{
+    "name": "recurrent",
+    "type": "function",
+    "pipelined": "yes",
+    "dataflowed": "yes",
+    "original_ti": 442,
+    "original_tl": 480,
+    "calculated_ti": -1,
+    "calculated_tl": -1,
+    "assume_ti": -1,
+    "assume_tl": -1,
+    "CIs": [
+        {
+            "ID": 0,
+            "name": "lstm_stack_ap_fixed_14_7_0_3_0_ap_fixed_14_7_0_3_0_config2_s",
+            "type": "function",
+            "pipelined": "yes",
+            "dataflowed": "no",
+            "original_ti": 441,
+            "original_tl": 441,
+            "calculated_ti": -1,
+            "calculated_tl": -1,
+            "assume_ti": -1,
+            "assume_tl": -1,
+            "CIs": [],
+            "loops": [
+                {
+                    "name": "VITIS_LOOP_242_2",
+                    "type": "loop",
+                    "trip_count": 4,
+                    "pipelined": "no",
+                    "dataflowed": "no",
+                    "original_ti": 440,
+                    "original_tl": 440,
+                    "calculated_ti": -1,
+                    "calculated_tl": -1,
+                    "assume_ti": -1,
+                    "assume_tl": -1,
+                    "CIs": [
+                        {
+                            "ID": 0,
+                            "name": "lstm_static_ap_fixed_14_7_0_3_0_ap_fixed_14_7_0_3_0_config2_false_s",
+                            "type": "function",
+                            "pipelined": "yes",
+                            "dataflowed": "no",
+                            "original_ti": 101,
+                            "original_tl": 101,
+                            "calculated_ti": -1,
+                            "calculated_tl": -1,
+                            "assume_ti": -1,
+                            "assume_tl": -1,
+                            "CIs": [
+                                {
+                                    "ID": 0,
+                                    "name": "dense_resource_rf_gt_nin_rem0_ap_fixed_ap_fixed_14_7_0_3_0_config2_1_s",
+                                    "type": "function",
+                                    "pipelined": "yes",
+                                    "dataflowed": "no",
+                                    "original_ti": 64,
+                                    "original_tl": 71,
+                                    "calculated_ti": -1,
+                                    "calculated_tl": -1,
+                                    "assume_ti": -1,
+                                    "assume_tl": -1,
+                                    "CIs": [],
+                                    "loops": [
+                                        {
+                                            "name": "ReuseLoop",
+                                            "type": "loop",
+                                            "trip_count": 64,
+                                            "pipelined": "yes",
+                                            "dataflowed": "no",
+                                            "original_ti": 64,
+                                            "original_tl": 71,
+                                            "calculated_ti": -1,
+                                            "calculated_tl": -1,
+                                            "assume_ti": -1,
+                                            "assume_tl": -1,
+                                            "CIs": [],
+                                            "loops": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "ID": 1,
+                                    "name": "dense_resource_rf_gt_nin_rem0_ap_fixed_ap_fixed_14_7_0_3_0_config2_2_s",
+                                    "type": "function",
+                                    "pipelined": "yes",
+                                    "dataflowed": "no",
+                                    "original_ti": 64,
+                                    "original_tl": 71,
+                                    "calculated_ti": -1,
+                                    "calculated_tl": -1,
+                                    "assume_ti": -1,
+                                    "assume_tl": -1,
+                                    "CIs": [],
+                                    "loops": [
+                                        {
+                                            "name": "ReuseLoop",
+                                            "type": "loop",
+                                            "trip_count": 64,
+                                            "pipelined": "yes",
+                                            "dataflowed": "no",
+                                            "original_ti": 64,
+                                            "original_tl": 71,
+                                            "calculated_ti": -1,
+                                            "calculated_tl": -1,
+                                            "assume_ti": -1,
+                                            "assume_tl": -1,
+                                            "CIs": [],
+                                            "loops": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "ID": 2,
+                                    "name": "sigmoid_ap_fixed_ap_fixed_14_7_0_3_0_sigmoid_config2_recr_s",
+                                    "type": "function",
+                                    "pipelined": "yes",
+                                    "dataflowed": "no",
+                                    "original_ti": 1,
+                                    "original_tl": 6,
+                                    "calculated_ti": -1,
+                                    "calculated_tl": -1,
+                                    "assume_ti": -1,
+                                    "assume_tl": -1,
+                                    "CIs": [],
+                                    "loops": []
+                                },
+                                {
+                                    "ID": 3,
+                                    "name": "tanh_ap_fixed_14_7_0_3_0_ap_fixed_14_7_0_3_0_tanh_config2_s",
+                                    "type": "function",
+                                    "pipelined": "yes",
+                                    "dataflowed": "no",
+                                    "original_ti": 1,
+                                    "original_tl": 5,
+                                    "calculated_ti": -1,
+                                    "calculated_tl": -1,
+                                    "assume_ti": -1,
+                                    "assume_tl": -1,
+                                    "CIs": [],
+                                    "loops": []
+                                }
+                            ],
+                            "loops": []
+                        }
+                    ],
+                    "loops": []
+                }
+            ]
+        },
+        {
+            "ID": 1,
+            "name": "dense_resource_rf_leq_nin_ap_fixed_ap_fixed_14_7_0_3_0_config3_s",
+            "type": "function",
+            "pipelined": "yes",
+            "dataflowed": "no",
+            "original_ti": 32,
+            "original_tl": 38,
+            "calculated_ti": -1,
+            "calculated_tl": -1,
+            "assume_ti": -1,
+            "assume_tl": -1,
+            "CIs": [],
+            "loops": [
+                {
+                    "name": "ReuseLoop",
+                    "type": "loop",
+                    "trip_count": 32,
+                    "pipelined": "yes",
+                    "dataflowed": "no",
+                    "original_ti": 32,
+                    "original_tl": 38,
+                    "calculated_ti": -1,
+                    "calculated_tl": -1,
+                    "assume_ti": -1,
+                    "assume_tl": -1,
+                    "CIs": [],
+                    "loops": []
+                }
+            ]
+        }
+    ],
+    "loops": []
+}

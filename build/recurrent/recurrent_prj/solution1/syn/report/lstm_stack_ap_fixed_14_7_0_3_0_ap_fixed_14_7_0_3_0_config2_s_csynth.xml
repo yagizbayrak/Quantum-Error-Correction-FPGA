@@ -1,0 +1,548 @@
+<profile>
+
+<ReportVersion>
+<Version>2026.1</Version>
+</ReportVersion>
+
+<UserAssignments>
+<unit>ns</unit>
+<ProductFamily>artix7</ProductFamily>
+<Part>xc7a100t-csg324-1</Part>
+<TopModelName>lstm_stack_ap_fixed_14_7_0_3_0_ap_fixed_14_7_0_3_0_config2_s</TopModelName>
+<TargetClockPeriod>4.00</TargetClockPeriod>
+<ClockUncertainty>1.08</ClockUncertainty>
+</UserAssignments>
+
+<PerformanceEstimates>
+<PipelineType>no</PipelineType>
+<SummaryOfTimingAnalysis>
+<unit>ns</unit>
+<EstimatedClockPeriod>9.651</EstimatedClockPeriod>
+</SummaryOfTimingAnalysis>
+<SummaryOfOverallLatency>
+<unit>clock cycles</unit>
+<Best-caseLatency>437</Best-caseLatency>
+<Average-caseLatency>437</Average-caseLatency>
+<Worst-caseLatency>441</Worst-caseLatency>
+<Best-caseRealTimeLatency>4.217 us</Best-caseRealTimeLatency>
+<Average-caseRealTimeLatency>4.217 us</Average-caseRealTimeLatency>
+<Worst-caseRealTimeLatency>4.256 us</Worst-caseRealTimeLatency>
+<Interval-min>437</Interval-min>
+<Interval-max>441</Interval-max>
+<PerformancePragma>-</PerformancePragma>
+</SummaryOfOverallLatency>
+<SummaryOfLoopLatency>
+<VITIS_LOOP_242_2>
+<Slack>2.92</Slack>
+<TripCount>4</TripCount>
+<isPerfectNested>0</isPerfectNested>
+<Latency>
+<range>
+<min>436</min>
+<max>440</max>
+</range>
+</Latency>
+<AbsoluteTimeLatency>
+<range>
+<min>4207</min>
+<max>4246</max>
+</range>
+</AbsoluteTimeLatency>
+<IterationLatency>
+<range>
+<min>109</min>
+<max>110</max>
+</range>
+</IterationLatency>
+<PerformancePragma>-</PerformancePragma>
+<InstanceList>
+</InstanceList>
+</VITIS_LOOP_242_2>
+</SummaryOfLoopLatency>
+<SummaryOfViolations>
+<IssueType>Timing Violation</IssueType>
+<ViolationType>-</ViolationType>
+<SourceLocation>firmware/nnet_utils/nnet_recurrent.h:242~firmware/recurrent.cpp:39</SourceLocation>
+<SummaryOfLoopViolations>
+<VITIS_LOOP_242_2>
+<Name>VITIS_LOOP_242_2</Name>
+<IssueType>-</IssueType>
+<ViolationType>-</ViolationType>
+<SourceLocation>firmware/nnet_utils/nnet_recurrent.h:242~firmware/recurrent.cpp:39</SourceLocation>
+</VITIS_LOOP_242_2>
+</SummaryOfLoopViolations>
+</SummaryOfViolations>
+</PerformanceEstimates>
+
+<AreaEstimates>
+<Resources>
+<BRAM_18K>90</BRAM_18K>
+<DSP>176</DSP>
+<FF>45632</FF>
+<LUT>46766</LUT>
+<URAM>0</URAM>
+</Resources>
+<AvailableResources>
+<BRAM_18K>270</BRAM_18K>
+<DSP>240</DSP>
+<FF>126800</FF>
+<LUT>63400</LUT>
+<URAM>0</URAM>
+</AvailableResources>
+</AreaEstimates>
+
+<InterfaceSummary>
+<RtlPorts>
+<name>ap_clk</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_rst</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_start</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_done</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_continue</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_idle</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_ready</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_return_0</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>14</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_return_1</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>14</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_return_2</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>14</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_return_3</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>14</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_return_4</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>14</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_return_5</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>14</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_return_6</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>14</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_return_7</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>14</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_return_8</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>14</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_return_9</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>14</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_return_10</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>14</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_return_11</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>14</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_return_12</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>14</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_return_13</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>14</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_return_14</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>14</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_return_15</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>14</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_return_16</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>14</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_return_17</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>14</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_return_18</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>14</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_return_19</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>14</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_return_20</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>14</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_return_21</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>14</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_return_22</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>14</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_return_23</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>14</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_return_24</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>14</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_return_25</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>14</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_return_26</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>14</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_return_27</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>14</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_return_28</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>14</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_return_29</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>14</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_return_30</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>14</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>ap_return_31</name>
+<Object>lstm_stack&lt;ap_fixed&lt;14, 7, 0, 3, 0&gt;, ap_fixed&lt;14, 7, 0, 3, 0&gt;, config2&gt;</Object>
+<Type>return value</Type>
+<Scope></Scope>
+<IOProtocol>ap_ctrl_hs</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>14</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>input_layer</name>
+<Object>input_layer</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>448</Bits>
+<Attribute>data</Attribute>
+</RtlPorts>
+<RtlPorts>
+<name>input_layer_ap_vld</name>
+<Object>input_layer</Object>
+<Type>pointer</Type>
+<Scope></Scope>
+<IOProtocol>ap_vld</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>in</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+</RtlPorts>
+</InterfaceSummary>
+
+</profile>
