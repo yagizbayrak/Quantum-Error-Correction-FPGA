@@ -19,6 +19,7 @@ TIMESTEPS = 20
 ROUNDS = range(1, TIMESTEPS)
 NOISES = (0.005,)
 SHOTS = 2_000_000
+TEST_SHOTS = 2_000_000
 TEST_FRACTION = 0.2
 BATCH = 256
 LR = 1e-3
@@ -83,10 +84,10 @@ def detector_columns(circuit):
     return {place: column for column, place in enumerate(sorted(places))}
 
 
-def dataset(rounds, shots, columns, noise):
+def dataset(rounds, shots, columns, noise, seed):
     circuit = build_circuit(DISTANCE, rounds, noise)
     coords = circuit.get_detector_coordinates()
-    dets, truth = circuit.compile_detector_sampler(seed=SEED + rounds).sample(
+    dets, truth = circuit.compile_detector_sampler(seed=seed).sample(
         shots, separate_observables=True
     )
     x = np.full((shots, TIMESTEPS, len(columns)), ABSENT, dtype=np.float32)
@@ -201,7 +202,7 @@ def epsilon(rates):
     return (1 - np.exp(slope)) / 2
 
 
-def run(noise, activation, width, train_set, validation_set, held):
+def run(noise, activation, width, train_set, validation_set, held, test):
     tag = f"d{DISTANCE}-p{noise}-{activation}"
     name = f"{WEIGHT_BITS}bit"
     aware = train(
@@ -231,25 +232,36 @@ def run(noise, activation, width, train_set, validation_set, held):
     sigma = (theirs_total - ours_total) / (ours_total + theirs_total) ** 0.5
     aware_eps, mwpm_eps = (epsilon(r) for r in (aware_rates, mwpm_rates))
 
+    x, mask, y, circuit, dets = test
+    matcher = pymatching.Matching.from_detector_error_model(
+        circuit.detector_error_model(decompose_errors=True)
+    )
+    mwpm_prediction = matcher.decode_batch(dets)[:, 0].astype(bool)
+    aware_prediction = predict(aware, x, mask)
+    aware_rate = (aware_prediction != y).mean()
+    mwpm_rate = (mwpm_prediction != y).mean()
+    ours, theirs, shot_sigma = mcnemar(aware_prediction, mwpm_prediction, y)
+
     print(f"\n{tag}  {width} detectors per round, {HIDDEN} units")
     print(f"  per-round logical error rate, fit to F(n) = (1 - 2 eps)^n")
     print(f"    {WEIGHT_BITS}-bit aware      {aware_eps:.5f}")
     print(f"    pymatching       {mwpm_eps:.5f}")
-    print(f"  per-shot rate at {DISTANCE} rounds: {WEIGHT_BITS}-bit {aware_rates[DISTANCE]:.5f}, pymatching {mwpm_rates[DISTANCE]:.5f}")
+    print(f"  per-round discordant {ours_total} against {theirs_total}, {sigma:+.1f} sigma")
     print(f"  per-shot rate at {ROUNDS.stop - 1} rounds: {WEIGHT_BITS}-bit {aware_rates[ROUNDS.stop - 1]:.5f}, pymatching {mwpm_rates[ROUNDS.stop - 1]:.5f}")
-    print(f"  discordant       {ours_total} against {theirs_total}, {sigma:+.1f} sigma\n", flush=True)
+    print(f"  per-shot rate at {DISTANCE} rounds over {TEST_SHOTS} shots: {WEIGHT_BITS}-bit {aware_rate:.5f}, pymatching {mwpm_rate:.5f}")
+    print(f"  discordant       {ours} against {theirs}, {shot_sigma:+.1f} sigma\n", flush=True)
     record(
         decoder="recurrent",
         distance=DISTANCE,
         p=noise,
-        shots=len(validation_set[0]),
+        shots=TEST_SHOTS,
         seed=SEED,
-        config=f"{HIDDEN} units, {WEIGHT_BITS} bit, {activation} activations, {width} detectors, rounds 1-{ROUNDS.stop - 1}, per-round eps",
-        quantized_rate=f"{aware_eps:.5f}",
-        pymatching=f"{mwpm_eps:.5f}",
-        decoder_only_wrong=ours_total,
-        mwpm_only_wrong=theirs_total,
-        sigma=f"{sigma:+.1f}",
+        config=f"{HIDDEN} units, {WEIGHT_BITS} bit, {activation} activations, {width} detectors, {DISTANCE} rounds",
+        quantized_rate=f"{aware_rate:.5f}",
+        pymatching=f"{mwpm_rate:.5f}",
+        decoder_only_wrong=ours,
+        mwpm_only_wrong=theirs,
+        sigma=f"{shot_sigma:+.1f}",
     )
 
 
@@ -263,13 +275,14 @@ def main():
         train_x, train_mask, train_y = [], [], []
         held = {}
         for rounds in ROUNDS:
-            x, mask, y, circuit, dets = dataset(rounds, per_round, columns, noise)
+            x, mask, y, circuit, dets = dataset(rounds, per_round, columns, noise, SEED + rounds)
             train_x.append(x[:split]); train_mask.append(mask[:split]); train_y.append(y[:split])
             held[rounds] = (x[split:], mask[split:], y[split:], circuit, dets[split:])
         train_set = resident(*(np.concatenate(a) for a in (train_x, train_mask, train_y)))
         validation_set = resident(*(np.concatenate([held[r][i] for r in ROUNDS]) for i in range(3)))
+        test = dataset(DISTANCE, TEST_SHOTS, columns, noise, SEED)
         for activation in ACTIVATIONS:
-            run(noise, activation, len(columns), train_set, validation_set, held)
+            run(noise, activation, len(columns), train_set, validation_set, held, test)
 
 
 if __name__ == "__main__":
