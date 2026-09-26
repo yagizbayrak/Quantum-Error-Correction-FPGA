@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
-| Date         : Mon Sep 14 18:09:00 2026
+| Date         : Sat Sep 26 14:07:48 2026
 | Host         : Yagiz running 64-bit major release  (build 9200)
 | Command      : report_utilization -file synth/reports/dwn_decoder_utilization.rpt
 | Design       : dwn_decoder
@@ -71,9 +71,9 @@ Table of Contents
 +--------------------------------------------+------+-------+------------+-----------+-------+
 |                  Site Type                 | Used | Fixed | Prohibited | Available | Util% |
 +--------------------------------------------+------+-------+------------+-----------+-------+
-| Slice                                      |  183 |     0 |          0 |     15850 |  1.15 |
-|   SLICEL                                   |  137 |     0 |            |           |       |
-|   SLICEM                                   |   46 |     0 |            |           |       |
+| Slice                                      |  181 |     0 |          0 |     15850 |  1.14 |
+|   SLICEL                                   |  144 |     0 |            |           |       |
+|   SLICEM                                   |   37 |     0 |            |           |       |
 | LUT as Logic                               |  636 |     0 |          0 |     63400 |  1.00 |
 |   using O5 output only                     |    0 |       |            |           |       |
 |   using O6 output only                     |  612 |       |            |           |       |
@@ -88,10 +88,10 @@ Table of Contents
 |     using O6 output only                   |    0 |       |            |           |       |
 |     using O5 and O6                        |    0 |       |            |           |       |
 | Slice Registers                            |  619 |     0 |          0 |    126800 |  0.49 |
-|   Register driven from within the Slice    |  611 |       |            |           |       |
-|   Register driven from outside the Slice   |    8 |       |            |           |       |
-|     LUT in front of the register is unused |    6 |       |            |           |       |
-|     LUT in front of the register is used   |    2 |       |            |           |       |
+|   Register driven from within the Slice    |  610 |       |            |           |       |
+|   Register driven from outside the Slice   |    9 |       |            |           |       |
+|     LUT in front of the register is unused |    5 |       |            |           |       |
+|     LUT in front of the register is used   |    4 |       |            |           |       |
 +--------------------------------------------+------+-------+------------+-----------+-------+
 
 

@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
-| Date         : Mon Sep 14 18:17:13 2026
+| Date         : Sat Sep 26 14:05:52 2026
 | Host         : Yagiz running 64-bit major release  (build 9200)
 | Command      : report_timing_summary -max_paths 10 -file synth/reports/syndrome_frontend_timing.rpt
 | Design       : syndrome_frontend

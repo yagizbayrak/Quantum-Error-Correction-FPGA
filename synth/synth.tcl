@@ -1,6 +1,5 @@
-# Synthesises, places and routes one core out of context on the Artix-7 part, then writes its utilisation and timing reports.
+# Synthesises, places and routes one core or the whole top level out of context on the Artix-7 part, then writes its utilisation and timing reports.
 set top [lindex $argv 0]
-set period 4.000
 cd [file normalize [file join [file dirname [info script]] ..]]
 
 set sources [dict create \
@@ -9,6 +8,9 @@ set sources [dict create \
     dwn_decoder [concat [glob rtl/dwn/*.sv] [glob rtl/dwn/generated/*.sv]] \
     recurrent_decoder [concat [list rtl/recurrent/recurrent_decoder.sv] [glob -nocomplain rtl/recurrent/generated/*.v]] \
 ]
+dict set sources qec_decoder [concat [list rtl/qec_decoder.sv] {*}[dict values $sources]]
+set periods [dict create syndrome_frontend 4.000 union_find_decoder 16.000 dwn_decoder 4.200 recurrent_decoder 9.000 qec_decoder 17.000]
+set period [dict get $periods $top]
 
 read_verilog -sv [dict get $sources $top]
 synth_design -top $top -part xc7a100tcsg324-1 -mode out_of_context -include_dirs {rtl/frontend rtl/union_find rtl/dwn/generated}
